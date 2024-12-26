@@ -1,0 +1,50 @@
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+        --ct-gutter-x: 24px;
+        --ct-gutter-y: 0;
+        width: 100%;
+        padding-right: calc(var(--ct-gutter-x) * .5);
+        padding-left: calc(var(--ct-gutter-x) * .5);
+        margin-right: auto;
+        margin-left: auto;
+}
+
+.board {
+        display: block;
+        white-space: nowrap;
+        overflow-x: auto;
+}
+
+.tasks {
+        display: inline-block;
+        width: 20rem;
+        padding: 0 1rem 1rem 1rem;
+        border: 1px solid var(--ct-gray-200);
+        vertical-align: top;
+        margin-bottom: 1.5rem;
+        border-radius: 0.25rem;
+}
+
+.tasks.tasks {
+        margin-left: 1.25rem;
+}
+
+.tasks .task-header {
+        background-color: var(--ct-gray-100);
+        padding: 1rem;
+        margin: 0 -1rem;
+}
+
+.task-list-items {
+        min-height: 100px;
+        position: relative;
+}
+
+.dropdown-toggle::after {
+        display: none;
+}

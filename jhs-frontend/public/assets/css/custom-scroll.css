@@ -1,0 +1,62 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /* Light gray background */
+    background-color: #E1EBF9;
+    border-radius: 6px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+    /* Medium gray thumb color */
+    background-color: #BFD5F4;
+    border-radius: 6px;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    /* Darker gray on hover */
+    background-color: #73A2EB;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+
+.highlightAdded {
+    background-color: #a1fca1;
+}
+
+.highlightRemoved {
+    background-color: #ffbdbd;
+}
+
+.highlightAdded * {
+    background-color: #a1fca1;
+}
+
+.highlightRemoved * {
+    background-color: #ffbdbd;
+}
+
+.csl-entry {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: .5rem !important;
+}
+
+.csl-left-margin {
+    width: 30px; /* Adjust as needed */
+    text-align: right;
+    margin-right: 10px; /* Spacing between the number and the content */
+}
+
+.csl-right-inline {
+    flex: 1; /* Allows this section to take up the remaining space */
+    text-align: left;
+}

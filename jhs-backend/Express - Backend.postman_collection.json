@@ -1,0 +1,5255 @@
+{
+	"info": {
+		"_postman_id": "fb66bafe-7ad1-42a1-b068-69d22ea3a285",
+		"name": "Express - Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29875029"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shahbaz@onnmed.com\",\r\n    \"password\": \"Shahbaz@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password/Reset",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Shahbaz@177\",\r\n    \"confirmPassword\": \"Shahbaz@177\",\r\n    \"userId\": \"6379cc771dd3ad6b358def1a\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhiYXpAb25ubWVkLmNvbSIsInVzZXJJZCI6IjYzNzljYzc3MWRkM2FkNmIzNThkZWYxYSIsImlhdCI6MTY2ODkyNjcyMSwiZXhwIjoxNjY4OTI3MzIxfQ.g1_wyVv0duP85y8DMRiNi_OOSEfQe6hfoDTU7RLsMRA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/password/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dbSeed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/app/db/seed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"app",
+								"db",
+								"seed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign UP",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ali@onnmed.com\",\r\n    \"password\": \"Ali@123\",\r\n    \"role\": \"administration\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password/Recover",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shahbaz@onnmed.com\",\r\n    \"reference_url\": \"https://localhost:2000/auth/password/reset/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/password/recover",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"password",
+								"recover"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permission",
+			"item": [
+				{
+					"name": "updatePermission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5Y2M3NzFkZDNhZDZiMzU4ZGVmMWEiLCJpYXQiOjE2Njg5MjY4OTksImV4cCI6MTY2ODkzMDQ5OX0.B6CiWhcr9WPPNr7BPp1xObn14Qzv1blKL6Wu6EtCnXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Company\",\r\n    \"feature\": [\"Add\", \"Update\", \"Delete\", \"View\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/permission/update/6379cc771dd3ad6b358def0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"permission",
+								"update",
+								"6379cc771dd3ad6b358def0a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllPermission",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/permission/getAllPermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"permission",
+								"getAllPermission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPermission",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/permission/getPermission/6384b07e8ab9323febb7411f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"permission",
+								"getPermission",
+								"6384b07e8ab9323febb7411f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPermission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2Njk3OTU3MTIsImV4cCI6MTY2OTc5OTMxMn0.JKPheUYOz_JCywL-L4Hm744_oS4tN7DGysohleQvcFU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Article Published\",\r\n    \"feature\": [\"Add\", \"Update\", \"Delete\", \"View\", \"Assign\", \"Unassign\", \"Change Status\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/permission/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"permission",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "updateRole",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzdjYzc1YTZlODU3NGFkZGY4NzA5YjkiLCJpYXQiOjE2NjkxMjE5OTAsImV4cCI6MTY2OTEyNTU5MH0.kzuCQvLbU8gEQFNLGW6vF2ZOTIk7iUI0jh1x19AInMk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Administration\",\r\n    \"rolePermission\": [\r\n        \"user-add\",\r\n        \"user-update\",\r\n        \"user-view\",\r\n        \"user-delete\",\r\n        \"department-add\",\r\n        \"department-update\",\r\n        \"department-view\",\r\n        \"department-delete\",\r\n        \"journal-add\",\r\n        \"journal-update\",\r\n        \"journal-view\",\r\n        \"journal-delete\",\r\n        \"company-add\",\r\n        \"company-update\",\r\n        \"company-view\",\r\n        \"company-delete\",\r\n        \"employee-view\",\r\n        \"employee-assign\",\r\n        \"employee-unassign\",\r\n        \"articleStatus-add\",\r\n        \"articleStatus-update\",\r\n        \"articleStatus-view\",\r\n        \"articleStatus-delete\",\r\n        \"article-add\",\r\n        \"article-update\",\r\n        \"article-view\",\r\n        \"article-delete\",\r\n        \"article-assign\",\r\n        \"article-unassign\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/role/update/637cc7596e8574addf8709b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"role",
+								"update",
+								"637cc7596e8574addf8709b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRole",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/role/getRole/634babf21d7131de6a8b0ea2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"role",
+								"getRole",
+								"634babf21d7131de6a8b0ea2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRoles",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/role/getAllRole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"role",
+								"getAllRole"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addRole",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Users\",\r\n    \"rolePermission\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/role/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"role",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "getProfile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile/getProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile",
+								"getProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzdjYzc1YTZlODU3NGFkZGY4NzA5YjkiLCJpYXQiOjE2NjkyNzE5NDAsImV4cCI6MTY2OTI3NTU0MH0.EWNbIEVivss6-FvH1xNcVkKFJEA5xHEBRmd2sfNTLMI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"administration\",\r\n    \"first_name\": \"\",\r\n    \"last_name\": \"\",\r\n    \"department\": \"Journal of healthcare sciences\",\r\n    \"occupation\": \"Operation Executive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile/updateProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile",
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByUsername",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/getByUsername/shahbazbintahir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"getByUsername",
+								"shahbazbintahir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deactivateProfile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile/activateProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile",
+								"activateProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activateProfile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile/deactivateProfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile",
+								"deactivateProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeProfilePassword",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11emFtaWxAb25ubWVkLmNvbSIsInVzZXJJZCI6IjYzNzkwYWE2YTAzZjIxYWYzZWM4MDAwMyIsImlhdCI6MTY2ODg3NzU0OCwiZXhwIjoxNjY4ODgxMTQ4fQ.QnqXxNfvymdhcH2SlfBwVnozVzNvd6p0rIeBzHBN7qI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"Muzamil@123\",\r\n    \"newPassword\": \"Muzamil@1234\",\r\n    \"confirmPassword\": \"Muzamil@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile/changeProfilePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile",
+								"changeProfilePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "all",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/user/all?active=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"all"
+									],
+									"query": [
+										{
+											"key": "active",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE5NTY5ODAsImV4cCI6MTY3MTk2MDU4MH0.l26IIfbjgKZSNZL8n0YsRmImx4Xp4xh8OXhOR8q7SGc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"administration\",\r\n    \"email\": \"hassan@onnmed.com\",\r\n    \"first_name\": \"Hassan\",\r\n    \"last_name\": \"Ali\",\r\n    \"department\": \"Journal of healthcare sciences\",\r\n    \"occupation\": \"Developer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/update/6379dc508400d78ef61c3bdb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"update",
+								"6379dc508400d78ef61c3bdb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5ZGM1MDg0MDBkNzhlZjYxYzNiZGMiLCJpYXQiOjE2NjkwMDc1NzEsImV4cCI6MTY2OTAxMTE3MX0.Aa-zJ8grH58tiBG-QHIqPX6LvLgAePEaEKxE9z_oRDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"administration\",\r\n    \"first_name\": \"Ayman\",\r\n    \"last_name\": \"Abouhamda\",\r\n    \"department\": \"Journal of healthcare sciences\",\r\n    \"occupation\": \"CEO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/addUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserJournal",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5Y2M3NzFkZDNhZDZiMzU4ZGVmMWEiLCJpYXQiOjE2Njg5MjY4OTksImV4cCI6MTY2ODkzMDQ5OX0.B6CiWhcr9WPPNr7BPp1xObn14Qzv1blKL6Wu6EtCnXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/getUserJournal/6379cc771dd3ad6b358def19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"getUserJournal",
+								"6379cc771dd3ad6b358def19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzc5Y2M3NzFkZDNhZDZiMzU4ZGVmMWEiLCJpYXQiOjE2Njg5MjY4OTksImV4cCI6MTY2ODkzMDQ5OX0.B6CiWhcr9WPPNr7BPp1xObn14Qzv1blKL6Wu6EtCnXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/getUser/6379cc771dd3ad6b358def19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"getUser",
+								"6379cc771dd3ad6b358def19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTM4MzA0MzUsImV4cCI6MTY5MzgzNDAzNX0.5-dYDMka-EpHZGljjvE2qNhb3OoQAQ-FI8ebvL9teTE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/getAllUser?pagination=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"getAllUser"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deactivateUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/deactivateUser/634b96da2e6c7e7a3c3572be",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"deactivateUser",
+								"634b96da2e6c7e7a3c3572be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activateUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/activateUser/634b96da2e6c7e7a3c3572be",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"activateUser",
+								"634b96da2e6c7e7a3c3572be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE5NTY5ODAsImV4cCI6MTY3MTk2MDU4MH0.l26IIfbjgKZSNZL8n0YsRmImx4Xp4xh8OXhOR8q7SGc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploads",
+									"type": "file",
+									"src": "/C:/Users/97152/Downloads/62645335_300x300.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "getAllDepartment",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzA4MjM2NTQsImV4cCI6MTY3MDgyNzI1NH0.jqdvubUlU-i98T38TVg2M3TWGl5FDrNdepAk42iKs9Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/department/all?active=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"department",
+										"all"
+									],
+									"query": [
+										{
+											"key": "active",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateDepartment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Onnmed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/update/63562e5d08a19600cdc57418",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"update",
+								"63562e5d08a19600cdc57418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDepartment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/getDepartment/63562e5d08a19600cdc57418",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"getDepartment",
+								"63562e5d08a19600cdc57418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDepartment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/getAllDepartment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"getAllDepartment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deactivateDepartment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/deactivateDepartment/63562e5d08a19600cdc57418",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"deactivateDepartment",
+								"63562e5d08a19600cdc57418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activateDepartment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/activateDepartment/63562e5d08a19600cdc57418",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"activateDepartment",
+								"63562e5d08a19600cdc57418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDepartment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Future Doctors\",\r\n    \"email\": \"info@future-doctors.com\",\r\n    \"phone\": \"+971503291854\",\r\n    \"address\": \"The One Tower, 24th Floor, Sheikh Zayed Road, PO BOX 390114\",\r\n    \"city\": \"Dubai\",\r\n    \"country\": \"United Arab Emirates\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/department/addDepartment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"addDepartment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Journal",
+			"item": [
+				{
+					"name": "getJournal",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/journal/getJournal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"journal",
+								"getJournal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJournalWithManager",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE2OTg4OTQsImV4cCI6MTY3MTcwMjQ5NH0.9QZvovoxLtqGaO_iJOzPvGhaxRGnTEBWX30Vyj7JQLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/journal/getJournalWithManager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"journal",
+								"getJournalWithManager"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateJournal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzEzNTkxMDMsImV4cCI6MTY3MTM2MjcwM30.ry4aq5BXwC4aGT_2UEPf9mY2Du-Z2CQHJYHJ28cFhrc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Onnmed\",\r\n    \"eISSN\": \"4567890-8765\",\r\n    \"pISSN\": \"4567890-8765\",\r\n    \"_manageBy\": \"6357d750829d0d165a71b37e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/journal/updateJournal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"journal",
+								"updateJournal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "getCompany",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/company/getCompany",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"company",
+								"getCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCompanyWithOwner",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzEzNTYxMTksImV4cCI6MTY3MTM1OTcxOX0.qPyETYSwpPmni1ga1VCuZcyuBAWb4EfYPbqFW9U7h0Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/company/getCompanyWithOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"company",
+								"getCompanyWithOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCompany",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzEzNTYxMTksImV4cCI6MTY3MTM1OTcxOX0.qPyETYSwpPmni1ga1VCuZcyuBAWb4EfYPbqFW9U7h0Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Onnmed Publishing Group\",\r\n    \"email\": \"info@onnmed.com\",\r\n    \"phone\": \"+971503291854\",\r\n    \"address\": \"The One Tower, 24th Floor, Sheikh Zayed Road, PO BOX 390114\",\r\n    \"city\": \"Dubai\",\r\n    \"country\": \"United Arab Emirates\",\r\n    \"_owner\": \"6384b07f8ab9323febb7412f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/company/updateCompany",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"company",
+								"updateCompany"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "article Status",
+			"item": [
+				{
+					"name": "updateArticleStatus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_childStatus\":[\r\n        {\r\n            \"_id\":\"63592de7f042ff061b13fb70\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/assignChildToArticleStatus/63592d57f042ff061b13fb4d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"assignChildToArticleStatus",
+								"63592d57f042ff061b13fb4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignChildToArticleStatus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_childStatus\": \r\n        {\r\n            \"_id\":\"635926ba43cd2fd2585282d8\"\r\n        }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/unassignChildToArticleStatus/6359289696900fc2ab18b854",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"unassignChildToArticleStatus",
+								"6359289696900fc2ab18b854"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unassignChildToArticleStatus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_childStatus\": \r\n        {\r\n            \"_id\":\"63592de7f042ff061b13fb70\"\r\n        }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/unassignChildToArticleStatus/63592d50f042ff061b13fb49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"unassignChildToArticleStatus",
+								"63592d50f042ff061b13fb49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArticleStatus",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzA3NjI3NDEsImV4cCI6MTY3MDc2NjM0MX0.xh1kk-uXgYK5AfiLmJvpohX8Yu-sHHa24-4rmWjlxXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/getArticleStatus/63871ba19ee40b43a48fabac",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"getArticleStatus",
+								"63871ba19ee40b43a48fabac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArticleStatusWithChild",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/getArticleStatusWithChild/63592d50f042ff061b13fb49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"getArticleStatusWithChild",
+								"63592d50f042ff061b13fb49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllArticleStatus",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzA3NjI3NDEsImV4cCI6MTY3MDc2NjM0MX0.xh1kk-uXgYK5AfiLmJvpohX8Yu-sHHa24-4rmWjlxXU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/getAllArticleStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"getAllArticleStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllArticleStatusWithChild",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "parentStatus",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/getAllArticleStatusWithChild",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"getAllArticleStatusWithChild"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addArticleStatus",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Peer Review\",\r\n    \"message\": \"Your artical is in peer Review\",\r\n    \"payment\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleStatus/addArticleStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleStatus",
+								"addArticleStatus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article Type",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E4MWIzYjJiNjg0YjQ0ODNhMDdhNWMiLCJpYXQiOjE2NzE5NjE1NzMsImV4cCI6MTY3MTk2NTE3M30.aEGh6g3A18wYmgl4IVm23_eMJ5ecaaAxxr4WHyMV018",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Original Article\",\r\n    \"elements\": [\"introduction\", \"Methodology\", \"Results\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleType/update/63a81bf02b684b4483a07a79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleType",
+								"update",
+								"63a81bf02b684b4483a07a79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArticleType",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E5NzMxYTBmOWFkNzhmNWE5Y2UyOTMiLCJpYXQiOjE2NzIwNDk0NzEsImV4cCI6MTY3MjA1MzA3MX0.Sz3v3X1l1nBow7LNaHHaMjVwkcZ5n-DdBzpshgFT3eU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleType/getArticleType/63a81bf02b684b4483a07a79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleType",
+								"getArticleType",
+								"63a81bf02b684b4483a07a79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllArticleType",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E5NzNkOGE1N2MwNjM4YzFkOGYyNDkiLCJpYXQiOjE2NzIwNDk2MjcsImV4cCI6MTY3MjA1MzIyN30.LR6Z8pcMamUSJk315PbG0m6L6Axkn7X6U3zPSJsJS0k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleType/getAllArticleType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleType",
+								"getAllArticleType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addArticleStatus",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E4MWIzYjJiNjg0YjQ0ODNhMDdhNWMiLCJpYXQiOjE2NzE5NjE1NzMsImV4cCI6MTY3MTk2NTE3M30.aEGh6g3A18wYmgl4IVm23_eMJ5ecaaAxxr4WHyMV018",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Original Article\",\r\n    \"elements\": [\"introduction\", \"Methodology\", \"Results\", \"Discussion\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleType/addArticleType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleType",
+								"addArticleType"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "Author",
+					"item": [
+						{
+							"name": "unassignAuthor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IxNWJjM2E3NWZkNDEwM2U4NmQ5NjYiLCJpYXQiOjE2NzI2NjIzNjYsImV4cCI6MTY3MjY2NTk2Nn0.6Gd64JxT2kwKEJIYDJZYoIhQNvuQlfEUbNcw0V5CyaM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"authorList\": \r\n        {\r\n            \"_id\":\"63a9740acc97a09f05f119b7\"\r\n        }\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/unassignAuthor/63a97441cc97a09f05f119d2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"unassignAuthor",
+										"63a97441cc97a09f05f119d2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assignAuthor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E5NzQwYWNjOTdhMDlmMDVmMTE5YjYiLCJpYXQiOjE2NzIyMjQ5MjIsImV4cCI6MTY3MjIyODUyMn0._QpiVnzdewvybmS-04_SIgm-CcUvjqWYFoxWzmopqeo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"authorList\": [\r\n        {\r\n            \"_id\":\"63a9740acc97a09f05f119b7\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/assignAuthor/63a97441cc97a09f05f119d2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"assignAuthor",
+										"63a97441cc97a09f05f119d2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reviewer",
+					"item": [
+						{
+							"name": "unSuggestReviewer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reviewer\": \"6360f61d06b12561cdd4ed3b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/unSuggestReviewer/6360db487d5248d56130bd1f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"unSuggestReviewer",
+										"6360db487d5248d56130bd1f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "suggestReviewer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reviewer\":  \"6360f61d06b12561cdd4ed3b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/suggestReviewer/6360db487d5248d56130bd1f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"suggestReviewer",
+										"6360db487d5248d56130bd1f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editor",
+					"item": [
+						{
+							"name": "assignUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IxNWJjM2E3NWZkNDEwM2U4NmQ5NjYiLCJpYXQiOjE2NzI1Njc3NTAsImV4cCI6MTY3MjU3MTM1MH0.rG8XYknO5Aej6jHNmzehd7d2wUfDPKkCJxG3uU0z_0o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"editorType\": \"Reviewer\",\r\n    \"editorId\": \"63b15bc3a75fd4103e86d965\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/assignUser/63b15bdea75fd4103e86d982",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"assignUser",
+										"63b15bdea75fd4103e86d982"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unassignUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzdjYzc1YTZlODU3NGFkZGY4NzA5YjkiLCJpYXQiOjE2NjkyODc3MDIsImV4cCI6MTY2OTI5MTMwMn0.b5zyyzDeVUbIv8I83YMFgDk_aKvONlqosASVDppu_CY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/unassignUser/635f71736e32c44b695d702b/6357d750829d0d165a71b37e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"unassignUser",
+										"635f71736e32c44b695d702b",
+										"6357d750829d0d165a71b37e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"item": [
+						{
+							"name": "getAllArticleWithAuthorList",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMyNTIxODIsImV4cCI6MTY3MzI1NTc4Mn0.1VyXaQMoKvZPcXcGIOH4vzx28iWHyvK6c4zD5wyuIxI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/getAllArticleWithAuthorList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"getAllArticleWithAuthorList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllArticle",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2MiLCJpYXQiOjE2NzQ0NTY4MTQsImV4cCI6MTY3NDQ2MDQxNH0.HtyINv1x0vcMKseD_LWg8LsDY0lPypsh6Samqs3rhig",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/getAllArticle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"getAllArticle"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Specific",
+					"item": [
+						{
+							"name": "getArticle",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTUyMDU1MDIsImV4cCI6MTY5NTIwOTEwMn0.qBDv60D-sFavQ0eK0DT0gBmkTb0bLnU4xg7NiVHjM6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/getArticle/64f82a1c8296066d4fbaedb6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"getArticle",
+										"64f82a1c8296066d4fbaedb6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getArticleDetail",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTUyMDU1MDIsImV4cCI6MTY5NTIwOTEwMn0.qBDv60D-sFavQ0eK0DT0gBmkTb0bLnU4xg7NiVHjM6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/getArticleDetail/64f82a1c8296066d4fbaedb6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"getArticleDetail",
+										"64f82a1c8296066d4fbaedb6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getArticleWithAuthorList",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/getArticleWithAuthorList/6360db487d5248d56130bd1f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"getArticleWithAuthorList",
+										"6360db487d5248d56130bd1f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Figure",
+					"item": [
+						{
+							"name": "addFigure",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMyNTIwODksImV4cCI6MTY3MzI1NTY4OX0.6VUWlxvYwf6OLpVZuEoeZUQD_dL5xNyCnBQC4Ih_hbs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "figure",
+											"type": "file",
+											"src": "/C:/Users/97152/Desktop/20220117_154132-removebg-preview.png"
+										},
+										{
+											"key": "title",
+											"value": "asdasdasdasjdh askdhkajshd ",
+											"type": "default"
+										},
+										{
+											"key": "label",
+											"value": "asdasdasdasjdh askdhkajshd ",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/addFigure/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"addFigure",
+										"63b6cfbc3b37ea27d10adda0"
+									],
+									"query": [
+										{
+											"key": "figure",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removeFigure",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMyNTIwODksImV4cCI6MTY3MzI1NTY4OX0.6VUWlxvYwf6OLpVZuEoeZUQD_dL5xNyCnBQC4Ih_hbs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"figure\": \"63bab3d34c8f7da1ab90ce87\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/removeFigure/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"removeFigure",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Table",
+					"item": [
+						{
+							"name": "addTable",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTUxMTc5MjUsImV4cCI6MTY5NTEyMTUyNX0.cw9osDrEqkSw9ncqI7214JO38b4ecgowAXhPeye-3ng",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"ChatGPT position\",\r\n    \"label\": \"label of new date\",\r\n    \"data\": \"new data3\",\r\n    \"position\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/addTable/64f82a1c8296066d4fbaedb6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"addTable",
+										"64f82a1c8296066d4fbaedb6"
+									],
+									"query": [
+										{
+											"key": "figure",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateTable",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTUxMjMzNjMsImV4cCI6MTY5NTEyNjk2M30.sfpjcwg4n3nB7Pb87eGHdex6Os038VUTYMPcTMrmrWA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tableId\": \"6502de01100f9ce130c399e2\",\r\n    \"position\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/updateTable/64f82a1c8296066d4fbaedb6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"updateTable",
+										"64f82a1c8296066d4fbaedb6"
+									],
+									"query": [
+										{
+											"key": "figure",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removeTable",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMyNTIwODksImV4cCI6MTY3MzI1NTY4OX0.6VUWlxvYwf6OLpVZuEoeZUQD_dL5xNyCnBQC4Ih_hbs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tableId\": \"63bbceaea9643e5e01fa4ae3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/removeTable/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"removeTable",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateTableSorting",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTUyMDU1MDIsImV4cCI6MTY5NTIwOTEwMn0.qBDv60D-sFavQ0eK0DT0gBmkTb0bLnU4xg7NiVHjM6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"table_list\": [\r\n        {\r\n            \"title\": \"Table at 1st position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"6509959b58ca21ddf9dc93c4\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 2nd position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"6502de01100f9ce130c399e2\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 3rd position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"650973a33658744381e33883\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 4th position\",\r\n            \"label\": \"Updated label of new date\",\r\n            \"data\": \"Updated new data\",\r\n            \"_id\": \"65097357610c24a1da81224e\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 5th position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"650973b33658744381e338af\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 6th position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"6509955d58ca21ddf9dc9381\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 7th position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"6509957758ca21ddf9dc93a2\"\r\n        },\r\n        {\r\n            \"title\": \"Table at 8th position\",\r\n            \"label\": \"label of new date\",\r\n            \"data\": \"new data3\",\r\n            \"_id\": \"650995a958ca21ddf9dc93e7\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/updateTableSorting/64f82a1c8296066d4fbaedb6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"updateTableSorting",
+										"64f82a1c8296066d4fbaedb6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "References",
+					"item": [
+						{
+							"name": "updateReference",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMzNTU3NTgsImV4cCI6MTY3MzM1OTM1OH0.hjB0_5PLmSmMAITy0Xmv-R-c1k0kOPpRuLpGbRF8Oz4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"referenceId\": \"6362650f59155343987c04e4\",\r\n    \"reference\": \r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences of COMSATS ATD \",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/updateReference/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"updateReference",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateReferencesSorting",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMzNTU3NTgsImV4cCI6MTY3MzM1OTM1OH0.hjB0_5PLmSmMAITy0Xmv-R-c1k0kOPpRuLpGbRF8Oz4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reference\": [\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 1\",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\",\r\n            \"_id\": \"6362650f59155343987c04e4\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"shahbaz, ayman\",\r\n            \"title\": \"Medical Sciences 2\",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\",\r\n            \"_id\": \"6362650f59155343987c04e3\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 3\",\r\n            \"_id\": \"6362650f59155343987c04e5\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 4\",\r\n            \"_id\": \"6362650f59155343987c04e6\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 5\",\r\n            \"_id\": \"6362650f59155343987c04e7\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 6\",\r\n            \"_id\": \"6362650f59155343987c04e8\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 7\",\r\n            \"_id\": \"6362650f59155343987c04e9\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 8\",\r\n            \"_id\": \"6362650f59155343987c04ea\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 9\",\r\n            \"_id\": \"6362650f59155343987c04eb\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 10\",\r\n            \"_id\": \"6362650f59155343987c04ec\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 11\",\r\n            \"_id\": \"6362650f59155343987c04ed\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 12\",\r\n            \"_id\": \"6362650f59155343987c04ee\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 13\",\r\n            \"_id\": \"6362650f59155343987c04ef\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 14\",\r\n            \"_id\": \"6362650f59155343987c04f0\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 15\",\r\n            \"_id\": \"6362650f59155343987c04f1\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 16\",\r\n            \"_id\": \"6362650f59155343987c04f2\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 17\",\r\n            \"_id\": \"6362650f59155343987c04f3\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 18\",\r\n            \"_id\": \"6362650f59155343987c04f4\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 19\",\r\n            \"_id\": \"6362650f59155343987c04f5\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 20\",\r\n            \"_id\": \"6362650f59155343987c04f6\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 21\",\r\n            \"_id\": \"6362650f59155343987c04f7\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 22\",\r\n            \"_id\": \"6362650f59155343987c04f8\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 23\",\r\n            \"_id\": \"6362650f59155343987c04f9\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 24\",\r\n            \"_id\": \"6362650f59155343987c04fa\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 25\",\r\n            \"_id\": \"6362650f59155343987c04fb\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 26\",\r\n            \"_id\": \"6362650f59155343987c04fc\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 27\",\r\n            \"_id\": \"6362650f59155343987c04fd\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 28\",\r\n            \"_id\": \"6362650f59155343987c04fe\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 29\",\r\n            \"_id\": \"6362650f59155343987c04ff\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/updateReferenceSorting/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"updateReferenceSorting",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removeReference",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMzNTU3NTgsImV4cCI6MTY3MzM1OTM1OH0.hjB0_5PLmSmMAITy0Xmv-R-c1k0kOPpRuLpGbRF8Oz4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reference\": \"6362650f59155343987c04f9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/removeReference/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"removeReference",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addReference",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMzNTM5NDksImV4cCI6MTY3MzM1NzU0OX0.nE5s8bbnZmhBmTgLdTsAC_KroQaiypzhIt7HSSKIbv4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reference\":\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 1\",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/addReference/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"addReference",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "launchReference",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzMzNTM5NDksImV4cCI6MTY3MzM1NzU0OX0.nE5s8bbnZmhBmTgLdTsAC_KroQaiypzhIt7HSSKIbv4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reference\":  [\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"ali, azmat\",\r\n            \"title\": \"Medical Sciences 1\",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\"\r\n        },\r\n        {\r\n            \"type\": \"journal\",\r\n            \"authors\": \"shahbaz, ayman\",\r\n            \"title\": \"Medical Sciences 2\",\r\n            \"doi\": \"10.52533/JOHS.2022.21101\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/article/launchReference/63b6cfbc3b37ea27d10adda0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"article",
+										"launchReference",
+										"63b6cfbc3b37ea27d10adda0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E5NzQwYWNjOTdhMDlmMDVmMTE5YjYiLCJpYXQiOjE2NzIzMDQ3ODUsImV4cCI6MTY3MjMwODM4NX0.0BlJ4NbzL8CiXjP6RNzLElT6ChOoROsKAqtMRkbsPDQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"An Overview of Dentofacial Deformity and How It Affects the Quality of Life\",\r\n    \"type\": \"Review\",\r\n    \"introduction\": \"One of today's most commonly utilized plain film tomographic scans is the orthopantomogram (OPG). Panoramic radiography of the dental arches is another name for orthopantomography. The technology can deliver intricate information about the masticatory anatomy and the elements around it, enabling the assessment of normal anatomy (1, 2). It is an economical, easily accessible imaging technique that allows for the accurate planning of odontoiatric therapies in a notable variety of cases. Dentists frequently request an OPG as a screening tool. Due to its accurate depiction of the jaws and entire dentition, it is also a powerful diagnostic instrument for determining pathology such as dental disease, cysts, maxillofacial trauma, and dental emergencies (1, 3). Dental and maxillofacial crises frequently appear in emergency care and can be very serious and even fatal (4). Therefore, it is essential that emergency physicians, in addition to dental professionals, are knowledgeable about the diagnosis and treatment of such problems, including evaluation of the panoramic radiograph (4, 5). OPG is a radiographic method that allows for the creation of panoramic radiograms that can show anatomically complex structures. Along with dental arches, it also comprises the temporomandibular joints, superior and inferior maxillaries, and paranasal sinuses (table 1). Therefore, transferring the aforementioned anatomical structures into a bidimensional radiological image is panoramic radiography's most difficult task. Interpretation discrepancies are frequently observed with this type of facial skeleton radiography due to the distinctive image approach, anatomic characterization, and radiography artifacts (6, 7). Additionally, many individual variances among the entire population must be taken into account.\",\r\n    \"methodology\": \"This study is based on a comprehensive literature search conducted on September 26, 2022, in the Medline and Cochrane databases, utilizing the medical topic headings (MeSH) and a combination of all available related terms, according to the database. To prevent missing any possible research, a manual search for publications was conducted through Google Scholar, using the reference lists of the previously listed papers as a starting point. We looked for valuable information in papers that discussed the information about the anatomical features and pathologies in orthopantomogram. There were no restrictions on date, language, participant age, or type of publication.\",\r\n    \"result\": \"For patients of pediatric age and adults, the examination of the masticatory normal anatomy during OPG differs. Moreover, children exhibit what is known as a mixed dentition on radiographs, which is a situation in which both permanent and temporary dental components cohabit. As a result, in comparison to factors that apply to the research of an adult individual, issues of anatomic order and OPG possibilities findings are entirely different in developmental phase (7).Normal anatomyThe adult tooth's radiographic anatomy, which is accessible by OPG, lacks the same level of granularity as the radiographic anatomy assessed by intraoral radiographs (2). This is because the method has a technological peculiarity that favors a broad perspective over a thorough analysis. Despite this restriction, the majority of diagnostic demands can be met by the dental images produced by OPT, which adequately depict the macroscopical properties of the dental component.Each dental typology (incisors, canines, premolars, and molars) must be taken into consideration separately from an anatomic perspective.Dental Element The tooth is an architectonic creation from a morphological perspective, consisting of four separate patterns, macroscopical, and morphofunctional elements (8). A third root, called the palatal root, can be identified apart from the mesial and distal ones in a triradicular element (8). The latter appears to normally exist at the level of the first and second maxillary molars, but for projective reasons, it is not always evident using OPG. The palatal root does, in fact, develop on a distinct level than the other roots. As it is positioned further away from the detecting plane, it will end up being more expanded and radiologically less distinct (7).Support Apparatus or Periodontium The stability of the dental components, and ultimately the entire mastication apparatus, depends on the anatomical and functional integrity. The gingiva, the periodontal ligament (PDL), the cementum, and the alveolar bone make up this structure. OPG does not allow for direct radiographic viewing of the PDL (2). Only the analysis of the alveolar bone is possible in the radiographic display of the periodontal apparatus. Furthermore, it can also provide an assessment of the depth of the periodontal pocket and the condition of the tooth roots (9).Mandible and the Mandibular Canal In relation to the mandibular anatomy, OPG imaging allows to distinguish the ascending branch or mandibular ramus. The gingiva covers the retromolar trigone, an angular area that is present as a superior surface with triangular morphology behind the last molar (10). It is the anatomical region in this area which has the greatest bearing on oncological issues. The mandibular canal into which the inferior alveolar nerve enters can be seen on radiographs in almost all cases (10). A limited or nonexistent visibility of the mandibular canal can happen in patients with high levels of osteopenia, which results in the nonavailability of ideal contrasts for radiographic capture of the anatomy (8). Most typically, the apex of the second premolar tooth correlates to the mental foramen (10). However, in some circumstances, it can be situated both much closer to or at a larger distance from the second bicuspid's apex (10). Rarely, it is the apex of the first premolar tooth where the foramen positions itself (10). The bend that the mandibular canal makes in its more distal part, before it opens into the mental foramen, is a notable anatomic variation. When considering the anatomical variances, it is always important to keep in mind the exceptional incidence of mandibular canal bifidity (11). These are also regarded as a significant anatomical variance in the implantologic planning programs (11). Finally, from a clinical perspective, the duplication of the mandibular canal is a more serious and uncommon disorder since, in a few documented cases, it has been found to be associated with neoformations of vascular origin (9).Anatomy of the Surrounding Structures The zygomatic arch, maxillary sinus, nasal cavity, hard palate, pterygoid apophysis, and pterygopalatine fossa are the dominant elements that surround the dental arches that are apparent in OPG. Such regions are better imaged using other highly effective methods like computed tomography and magnetic resonance imaging. Some abnormalities pertaining to these elements visible on the OPG are fibrous dysplasia, osteolytic lesions, palatoschisis, polyposis, neoplasms, and osteomatous formations (9).Common pathological findingsAlterations of the dental elementAlthough more frequently found in adults, dental agenesis is more crucial to be radiologically identified in pediatric age individuals (9). The second premolar teeth, the lateral incisor teeth, and the third premolar teeth are the dental elements most usually impacted by such an abnormality. In the latter, in fact, the differential diagnosis encompasses both agenesis and a potential delay or missed tooth eruption if a permanent dental element is clinically detected as absent (12). The tooth could become impacted as a result of this. The persistence of a deciduous component that is linked to the agenesis of the equivalent permanent dental element or to the existence of an impacted permanent component represents another crucial aspect that can only be understood radiographically (13). OPG enables the visualization of orientation anomalies that happen on the frontal plane. In fact, it indicates the distoangular angulation (crown orientated away from the median side) or mesioangular angulation (crown pointed toward the medial line) (14). Figure 1 shows impaction of several teeth due to the presence multiple supernumerary teeth.Figure 1: OPG showing multiple impacted supernumerary teeth (15)CariesThe effects of caries on the enamel (whether in partial or full thickness), the dentine, and eventually the pulp chamber is determined by radiological classification (16). In this regard, it is important to keep in mind that these classifications come from assessments of the intraoral radiological examination, which is known to have a resolution capacity that is higher than the OPG one. As a result, there are certain limits to the evaluation of caries by OPG, particularly in terms of quantifying damage. However, from a logical viewpoint, it suffices to differentiate between enamel damage and dentine damage, as well as between the latter and potential pulp chamber involvement, in an orthopantomographic examination (9). In fact, it is obvious that carious lesions seen in profile will have a semilunar morphology and finely defined borders. On the other hand, frontally affected lesions exhibit a roundish shape despite keeping their acute form (17). Finally, caries that are photographed in three-quarter view due to their location have uneven morphology and poorly defined, blurry outlines (18). Caries must be differentiated into occlusal, interproximal (or interstitial caries), palatal, and vestibular caries depending on where it is located (18). As the interdental surfaces of the tooth are less explorable than the other parts of the tooth, interproximal caries is less apparent in radiographic testing (19). It becomes clear that OPG is unable to differentiate between the vestibular and lingual seats of the lesion because the seat of the lesion cannot be represented in three dimensions. The pulp chamber or canal is demonstrably involved for the same reasons, though more difficultly than with interproximal and occlusal caries (18). Additionally, not all radiolucent pictures show evidence of caries. At the level of the cementoenamel junction, cervical burnout can occasionally be seen (16). It results from an optical phenomenon brought on by the extraordinary thinness of the interface between the cement and the enamel in such a location (6).Figure 2: OPG showing periapical radiolucency. Case courtesy of Dr Calvin Gan, Radiopaediaorg, rID: 43260Periapical lesionsThe radiologist must accurately describe the image when evaluating radiological images in situations when clinical information is lacking, avoiding terms that denote complex pathological entities (such as acute periapical abscess or apical granuloma) and instead describing simple alterations (interruption of the lamina dura, periapical lytic lesion, perialveolar osteosclerosis) (20). For instance, the OPG in Figure 2 shows periapical radiolucency. In the presence of destroyed teeth and carious lesions, these would be indicative of dental abscess. However, in the absence of infective symptoms, they may also indicate periapical cysts or granulomas. Acute periapical abscess can manifest as a slight expansion of the periapical periodontal space if it is not resolved with therapy. In its early stages, this condition may still be linked to the integrity of the lamina dura. A distinct abscessual collection will develop if the lytic lesion of the periapical cancellous bone continues to advance and the lamina dura disappears (21). Due to the imperceptible interface between the abscessual collection and the surrounding trabecular bone, the lesion will exhibit hazy borders throughout this phase (22). The unfavorable progression of the abscess includes fistula symptoms and extensive damage of the alveolar bone (chronic alveolar abscess) (22). Fistulation can manifest as lingual or vestibular aspect cortical bone degradation. In these situations, the phenomenon cannot be seen by OPG since it cannot be represented in three dimensions (23). The other side of the periapical region's persistent inflammatory lesions is represented by the apical granuloma. The sharpness of the outlines, which are frequently seen as a fine sclerotic line, is the only radiographic characteristic that distinguishes the chronic abscess from other lesions. The potential existence of epithelial rests (rests of Malassez) in the tissue structure of the apical granuloma can result in the radicular cyst formation once the rests undergo cystic evolution. Although the two entities are fully distinct from a pathological standpoint, it is impossible to differentiate between a large apical granuloma and a small radicular cyst on the basis of radiological findings (21). The dimensions requirement is typically taken into account in order to separate the two entities for descriptive and syntactic concerns. Its maximum diameter between 12 and 15 mm signifies the change from a granuloma in the cystic phase to a clear radicular cyst (9).Periodontal diseaseThe periodontal disease is characterized in its early stages by the disruption of the dentogingival attachment and regression of the gingiva toward the apical region (20). This change results in the exposure of the cementoenamel junction, a progressive deterioration of the teeth's supporting tissues (including resorption of the alveolar bone and expansion of the PDL space), and the development of pathological depressions between the gingiva, the alveolar bone, and the tooth, also called gingival and alveolar sockets (24). Aggressive periodontitis includes atypical varieties that advance rapidly. Juvenile periodontitis typically manifests during adolescence and is frequently localized (25). The function of OPG in particular and diagnostic imaging in general appears to be auxiliary to the clinical diagnosis. The initial changes in the alveolar bone component that occur during the natural progression of periodontal disease are represented by the phenomena of demineralization and resorption of cortical and cancellous bone. OPG appears to be primarily restricted to morphological evaluation of these modifications (23). The initial etiopathogenic event in periodontal disease is typically known as horizontal alveolysis, which can be explained as follows: as the bone thins in the cranio-caudal direction, the alveolar ligament is subsequently damaged, and the dental root and neck are gradually exposed (8). The horizontal development of the resorption process, which then spreads to the spongiosa of the alveolar ridge, can advance to extremely dangerous degrees, where the loss of bone is linked to symptoms of severe dental instability. Such circumstances result in the so-called horizontal alveolar sockets, as was previously mentioned. Additionally, such sockets are capable of being radiologically evaluated (9). The primary manifestation of vertical or angular alveolysis, which follows a path parallel to or oblique to the longitudinal axis of the tooth, is the development of what are known as infraosseous sockets. In terms of pathology, infraosseous sockets are divided into groups based on how many bone walls separate their cavities. Four socket models with one, two, three, or round walls can be distinguished (niche socket). Such a differentiation is not always attainable from a radiological standpoint since the bidimensionality of the image only enables it to offer documentary proof of the socket walls that were hit in direct contact with the radiant beam at the level of the mesial and/or distal side of the tooth (9). On the other hand, it is impossible to analyze the lingual and vestibular socket walls.Cystic lesionsThe source of maxillary cystic lesions can be classified as either odontogenic or nonodontogenic. The only acquired odontogenic cysts that are primarily brought on by an inflammatory disease already present are radicular cysts (apical granuloma) (26). It involves the posterior teeth of the inferior maxilla and the anterior-lateral teeth of the superior maxillary more commonly. Radicular cysts that are still present after a tooth extraction are referred to as residual cysts. Apart from the anamnestic finding, the identification of a residual cyst is solely predicated on the radiological detection of the empty alveolus, which might be challenging if the cyst is large (23). The follicular cyst, often referred to as a dentigerous cyst, is an example of an odontogenic cyst that develops on a non-inflamed base (26). It is believed that primordial cyst and odontogenic keratocyst, two odontogenic-derived entities, are variations of the same pathological phenomenon (27). The radiological aspect, which is completely nonspecific, is made up of a lytic lesion with a narrow, regular sclerotic edge that may be unicameral or have thin divisions within. The mandible's angular area is also frequently the site of several types of odontogenic cancers (28). Therefore, it is obvious that it is difficult or impossible to discern between potential neoplasms such the monolocular ameloblastoma and cystic lesions with obvious dimensions and which result in dislocation or injury to the adjacent dental parts (29). Odontogenic tumors are typically composed of benign or mildly aggressive entities, despite the fact that they frequently exhibit a tendency for local recurrence (27). These neoformations are seen alongside the cystic lesions because, despite being rare, odontogenic tumors exhibit significant clinical and radiological similarities with the more prevalent cystic formations (26).\",\r\n    \"conclusion\": \"The OPG is valuable screening radiograph for checking the facial skeletal structure and teeth. Dental professionals frequently request it to evaluate the position of the third molars and establish a baseline for new patients. An evaluation of the patient's dental health is important, as is a look into any potential pathology of the teeth and the skeletal structures that support them. Additionally, it can be utilized to detect traumatic injuries, especially those to the mandible. To properly evaluate the images, a methodical technique to examining the radiograph and knowledge of the local anatomy are required.\",\r\n    \"keywords\": [\r\n        \"Dentofacial deformity\", \"Quality of life\", \"Orthognathic surgery\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/article/update/63a97441cc97a09f05f119d2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"update",
+								"63a97441cc97a09f05f119d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateArticle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzM3NjY4NDIsImV4cCI6MTY3Mzc3MDQ0Mn0.EAaDM2CCRL9JeKil6zXjIEOZmuFFXZTY1BIBUioqAPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/article/validateArticle/63bc0228233cf44e05e9ba05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"validateArticle",
+								"63bc0228233cf44e05e9ba05"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submitArticle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"An Overview of Dentofacial Deformity and How It Affects the Quality of Life\",\r\n    \"type\": \"Review\",\r\n    \"introduction\": \"One of today's most commonly utilized plain film tomographic scans is the orthopantomogram (OPG). Panoramic radiography of the dental arches is another name for orthopantomography. The technology can deliver intricate information about the masticatory anatomy and the elements around it, enabling the assessment of normal anatomy [table 1] (1, 2). It is an economical, easily accessible imaging technique that allows for the accurate planning of odontoiatric therapies in a notable variety of cases. Dentists frequently request an OPG as a screening tool. Due to its accurate depiction of the jaws and entire dentition, it is also a powerful diagnostic instrument for determining pathology such as dental disease, cysts, maxillofacial trauma, and dental emergencies (1, 3). Dental and maxillofacial crises frequently appear in emergency care and can be very serious and even fatal (4). Therefore, it is essential that emergency physicians, in addition to dental professionals, are knowledgeable about the diagnosis and treatment of such problems, including evaluation of the panoramic radiograph [figure 1] (4, 5). OPG is a radiographic method that allows for the creation of panoramic radiograms that can show anatomically complex structures. Along with dental arches, it also comprises the temporomandibular joints, superior and inferior maxillaries, and paranasal sinuses. Therefore, transferring the aforementioned anatomical structures into a bidimensional radiological image is panoramic radiography's most difficult task. Interpretation discrepancies are frequently observed with this type of facial skeleton radiography due to the distinctive image approach, anatomic characterization, and radiography artifacts (6, 7). Additionally, many individual variances among the entire population must be taken into account.\",\r\n    \"keywords\": [\r\n        \"Dentofacial deformity\", \"Quality of life\", \"Orthognathic surgery\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/article/submitArticle/63be4bc6c170b69756c7b730",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"submitArticle",
+								"63be4bc6c170b69756c7b730"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStarted",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E4MWIzYjJiNjg0YjQ0ODNhMDdhNWMiLCJpYXQiOjE2NzE5NjE1NzMsImV4cCI6MTY3MTk2NTE3M30.aEGh6g3A18wYmgl4IVm23_eMJ5ecaaAxxr4WHyMV018",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Original Article\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/article/getStarted",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"getStarted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMyArticle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzEwMjQ5ODEsImV4cCI6MTY3MTAyODU4MX0.1HA2UtLegDBvQvpX1R0VFueMiAjf4ei2WcEbjLJeXQ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/article/deleteMyArticle/6395bd6ec80004e14c9ac224",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"deleteMyArticle",
+								"6395bd6ec80004e14c9ac224"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article Processing",
+			"item": [
+				{
+					"name": "addComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTM4MjcwNjksImV4cCI6MTY5MzgzMDY2OX0.9EvpOrnMuCWDz5beEbBJDT0V1MZrZ41TEeSzmFCunT0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Dental caries is a multifactorial disease influenced by various factors, including diet, oral hygiene practices, and genetic predisposition. It is a prevalent oral health concern in the pediatric population, necessitating effective preventive strategies. In children, early intervention and prevention are critical to mitigating the burden of dental caries. In early childhood, energy needs are greater in proportion than that in later years, and stomach capacities are lower (1).\",\r\n    \"userType\": \"Editor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/addComment/64cba7609b3015afc6cc0174",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"addComment",
+								"64cba7609b3015afc6cc0174"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCommentReply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ0NjM5NTcsImV4cCI6MTY3NDQ2NzU1N30.2Lf3Ce6JOiei4ASNBKT4z_N4St-5nMTPCx0eA52S4Vk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Reply\",\r\n    \"commentId\": \"63ce4beefea082d933e622fc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/addCommentReply/63c636b7ba1ff1f43ca060af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"addCommentReply",
+								"63c636b7ba1ff1f43ca060af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markCommentComplete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ0Njk2MjUsImV4cCI6MTY3NDQ3MzIyNX0.4xuUHcZkYkveKo6j3PkyIoTdm3Gv0evN1lriEbLofFg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/markCommentComplete/63c636b7ba1ff1f43ca060af/63ce4beefea082d933e622fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"markCommentComplete",
+								"63c636b7ba1ff1f43ca060af",
+								"63ce4beefea082d933e622fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ1NjUyNzksImV4cCI6MTY3NDU2ODg3OX0.C_Y3Xgg3dNiUffZwZSx6CuJEXPRD_QeaivcI5kvJYRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/getComment/63ce4beefea082d933e622fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"getComment",
+								"63ce4beefea082d933e622fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "moveArticleToEditorCheck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ0NjM5NTcsImV4cCI6MTY3NDQ2NzU1N30.2Lf3Ce6JOiei4ASNBKT4z_N4St-5nMTPCx0eA52S4Vk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/moveArticleToEditorCheck/63c636b7ba1ff1f43ca060af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"moveArticleToEditorCheck",
+								"63c636b7ba1ff1f43ca060af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "moveArticleToLanguageCheck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ0NjM5NTcsImV4cCI6MTY3NDQ2NzU1N30.2Lf3Ce6JOiei4ASNBKT4z_N4St-5nMTPCx0eA52S4Vk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/moveArticleToLanguageCheck/63c636b7ba1ff1f43ca060af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"moveArticleToLanguageCheck",
+								"63c636b7ba1ff1f43ca060af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "moveArticleToPeerReview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ0NjM5NTcsImV4cCI6MTY3NDQ2NzU1N30.2Lf3Ce6JOiei4ASNBKT4z_N4St-5nMTPCx0eA52S4Vk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/moveArticleToPeerReview/63c636b7ba1ff1f43ca060af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"moveArticleToPeerReview",
+								"63c636b7ba1ff1f43ca060af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendArticleForGalleryProof",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2IiLCJpYXQiOjE2NzQ3MjU3ODgsImV4cCI6MTY3NDcyOTM4OH0.-QW_hCtMKlKkWBBJorRO7NIAO2ozP1JEET9kFEE8NzE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/articleProcessing/sendArticleForGalleryProof/63c636b7ba1ff1f43ca060af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articleProcessing",
+								"sendArticleForGalleryProof",
+								"63c636b7ba1ff1f43ca060af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createInvoice",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGM2MzEwYWFlZTA3Y2I1NWY4Yjg5YTgiLCJpYXQiOjE2OTI1MTkzNTgsImV4cCI6MTY5MjUyMjk1OH0.wVUv47-3z3-Hbjixar7okFcQvBqEUa_qlHH36VcyEos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":  \"Please Add the valid infomation\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/article/createInvoice/64e1b08c41b7ff38f7e709fe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"article",
+								"createInvoice",
+								"64e1b08c41b7ff38f7e709fe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "allWithDetail",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/employee/allWithDetail",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"employee",
+										"allWithDetail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/journal/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"journal",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTQ5MjcsImV4cCI6MTY2Nzk5ODUyN30.oCo_sgvfSryemTTO_EmnGzTq92ebUcJ0hmKa99j5Vz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"position\": \"Operation Manager\",\r\n    \"employee_id\": {\r\n        \"_id\": \"6357d750829d0d165a71b37e\"\r\n    },\r\n    \"reporting_to_id\": {\r\n        \"_id\": \"6357d8b514e87b1636b52c76\"\r\n    },\r\n    \"company_id\": {\r\n        \"_id\": \"63566afb128907d15a4b3659\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/updateEmployee/636a45a31baafefb373de12c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"updateEmployee",
+								"636a45a31baafefb373de12c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignEmployee",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTY4NjIsImV4cCI6MTY2ODAwMDQ2Mn0.ADPS-k0kEMcvmFQMfB2BN51ter-Iu8LBScBUyaBR3RA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"position\": \"Operation Executive\",\r\n    \"employee_id\": {\r\n        \"_id\": \"6357d750829d0d165a71b37e\"\r\n    },\r\n    \"reporting_to_id\": {\r\n        \"_id\": \"6357d8b514e87b1636b52c76\"\r\n    },\r\n    \"company_id\": {\r\n        \"_id\": \"63566afb128907d15a4b3659\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/assignEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"assignEmployee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unassignEmployee",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTY1MTEsImV4cCI6MTY2ODAwMDExMX0.gfzjU-g5se6v-MU4uKjl98b6wVcXIu0kO3JW3b9tmAU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/unassignEmployee/6357db1a1fc742f2b68e77ef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"unassignEmployee",
+								"6357db1a1fc742f2b68e77ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployee",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTQ5MjcsImV4cCI6MTY2Nzk5ODUyN30.oCo_sgvfSryemTTO_EmnGzTq92ebUcJ0hmKa99j5Vz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/getEmployee/636a45a31baafefb373de12c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"getEmployee",
+								"636a45a31baafefb373de12c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeWithDetail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5MDg1NTAsImV4cCI6MTY2NzkxMjE1MH0.bPuQTns402u5QYxBPyd3MVdCjpgPpyJautJ8_BJLlE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/getEmployeeWithDetail/6358c6c9aee1f4f8b32df27e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"getEmployeeWithDetail",
+								"6358c6c9aee1f4f8b32df27e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEmployee",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTQ5MjcsImV4cCI6MTY2Nzk5ODUyN30.oCo_sgvfSryemTTO_EmnGzTq92ebUcJ0hmKa99j5Vz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/getAllEmployee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"getAllEmployee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllEmployeeWithDetail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzU3ZDc1MDgyOWQwZDE2NWE3MWIzN2UiLCJpYXQiOjE2Njc5OTQ5MjcsImV4cCI6MTY2Nzk5ODUyN30.oCo_sgvfSryemTTO_EmnGzTq92ebUcJ0hmKa99j5Vz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employee/getAllEmployeeWithDetail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"getAllEmployeeWithDetail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article In Review",
+			"item": []
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "getAllChats",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzE3MDQxNTAsImV4cCI6MTY3MTcwNzc1MH0.O8G8CRMyLsGNHa0M_7l1w-UTX4pdDV5pHKBcPeBahsQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/chat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createChat",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2M0ZmJiNWQ5ODRjNDY0ZjQ1OTM5Y2MiLCJpYXQiOjE2NzQwNDI5OTUsImV4cCI6MTY3NDA0NjU5NX0.LXok2wDwMYdPLRjN2kdqMJRprkSIsa5Fj9pqb0cvytk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Journal of Dubai\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/createChat",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"createChat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateChat",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzAyMzcxMDksImV4cCI6MTY3MDI0MDcwOX0.Vs-le_lQNM1WNwYkIg0ZXp3bCLa8U02i0IAub9RtKx4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Journal ABCD Chat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/updateChat/638dcbb598d8a5afb439b95b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"updateChat",
+								"638dcbb598d8a5afb439b95b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markChatAsClosed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzAyMzM0MzgsImV4cCI6MTY3MDIzNzAzOH0.JHrw8GqZvMdQ6_QGNOfqUTBPX9ZQ0mh1-YE6nY_x0ZQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/markChatAsClosed/638dcbb598d8a5afb439b95b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"markChatAsClosed",
+								"638dcbb598d8a5afb439b95b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzAyMzgwOTgsImV4cCI6MTY3MDI0MTY5OH0.z9JGoVqMsmelnBINTdBS3xq0cIcOnSyuvGh9-Y5Rpeo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"6384b07f8ab9323febb74130\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/addUser/638dcbb598d8a5afb439b95b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"addUser",
+								"638dcbb598d8a5afb439b95b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzAyMzgwOTgsImV4cCI6MTY3MDI0MTY5OH0.z9JGoVqMsmelnBINTdBS3xq0cIcOnSyuvGh9-Y5Rpeo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"6384b07f8ab9323febb74130\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/removeUser/638dcbb598d8a5afb439b95b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"removeUser",
+								"638dcbb598d8a5afb439b95b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendMessage",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg0YjA3ZjhhYjkzMjNmZWJiNzQxMmYiLCJpYXQiOjE2NzAyMzc2NjksImV4cCI6MTY3MDI0MTI2OX0.1pFMx1ignnSwtkSy1mkHibsg5F1C2aNOarNYruvYQDA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Journal ABCD Chat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/chat/sendMessage/638dcbb598d8a5afb439b95b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chat",
+								"sendMessage",
+								"638dcbb598d8a5afb439b95b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "searchByEmail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzI3NDQwMzQsImV4cCI6MTY3Mjc0NzYzNH0.9um8Tstxj7owI7io3HYpWTTXHxCFp_KBFUQ7GV7UO4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ayman@onnmed.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/author/searchByEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"author",
+								"searchByEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPublicUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2IzYmJmMWU3ZGFkZmUwZmMwN2YyNTAiLCJpYXQiOjE2NzI3NDQwMzQsImV4cCI6MTY3Mjc0NzYzNH0.9um8Tstxj7owI7io3HYpWTTXHxCFp_KBFUQ7GV7UO4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shahbazbintahir@gmail.com\",\r\n    \"first_name\": \"Shahbaz\",\r\n    \"last_name\": \"Bin Tahir\",\r\n    \"department\": \"Journal of healthcare sciences\",\r\n    \"occupation\": \"Opertator\",\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/author/addPublicUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"author",
+								"addPublicUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
