@@ -397,3 +397,45 @@
 .progress {
   --ar-progress-bar-bg: #186fe0;
 }
+
+.highlight-article {
+  position: relative; /* Required for absolute positioning of the popover */
+}
+
+/* Popover styles */
+.highlight-article .hightlight-popover {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Position below the element */
+  left: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 200px;
+  border-radius: 15px;
+}
+
+/* .highlight-article .hightlight-popover:before {
+  width: 300px;
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  transform: rotate(45deg);
+} */
+
+.highlight-article:hover .hightlight-popover {
+  display: flex;
+}
+
+.highlight-article .hightlight-popover .text-span {
+  display: block;
+  font-size: 11px;
+}

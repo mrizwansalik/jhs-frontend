@@ -61,4 +61,25 @@ export const sysDate = (dateTime, returnType = 'dateTime') => {
     return time;
 };
 
+const colors = [
+    { background: '#34CB79', borderColor: '#2A9F5E' },
+    { background: 'rgba(30, 129, 206, 0.90)', borderColor: 'rgba(25, 108, 172, 1)' },
+    { background: '#CF32CFE5', borderColor: '#9A249A' },
+    { background: '#FF6347', borderColor: '#CC4F39' }, 
+    { background: '#7B68EE', borderColor: '#5E4FB4' },
+    { background: '#3CB371', borderColor: '#2E8B57' },
+    { background: '#FFA07A', borderColor: '#E4886A' },
+    { background: '#9370DB', borderColor: '#7559B0' },
+    { background: '#00CED1', borderColor: '#009C9E' },
+  ];
+
+export const getHighlightColorById = (id) => {
+    const idString = String(id); // Ensure the ID is treated as a string
+    const hash = idString
+      .split('')
+      .reduce((acc, char) => char.charCodeAt(0) + acc, 0); // Hash the ID
+    const index = Math.abs(hash) % colors.length; // Ensure index is within bounds
+    return colors[index];
+  };
+
 

@@ -44,7 +44,13 @@ const ArticleProcessing = () => {
     const selectedArticleType = useSelector((state) => state.articleType.selected);
     const comments = useSelector((state) => state.article.comments);
 
-
+    useEffect(() => {
+        comments.forEach((comment) => {
+            let commentUserInfo = getArticleUserInfo(comment.addBy);
+            
+            highlight(comment.highlight, comment._id, comment.text, comment.startOffset, comment.endOffset, comment.forArea, commentUserInfo);
+        });
+    }, [comments]);
     useEffect(() => {
         dispatch(getArticle({ body: {}, options: { id: articleId, btnLoader: true, __module: "article" } }));
         dispatch(getArticleReferencesTextList({ body: {}, options: { id: articleId, btnLoader: true, __module: 'article', } }));
@@ -63,6 +69,8 @@ const ArticleProcessing = () => {
             dispatch({ type: "SELECTED_ARTICLE", payload: selectedArticle[0] });
         }
     }, [articleInfo, articleTypes]);
+
+
 
     // socket
     // getting state of Socket conn
@@ -200,7 +208,24 @@ const ArticleProcessing = () => {
                 let secondPart = innerHTML.substring(startOffset, endOffset);
                 let thirdPart = innerHTML.substring(endOffset, innerHTML.length);
                 if (index >= 0) {
-                    innerHTML = firstPart + `<span title='Author: ${commentUserInfo?.name }  | Comment: ${ comment}' id='${highlightId}' class='highlight'>` + secondPart + "</span>" + thirdPart;
+                    innerHTML = firstPart + `<span 
+                                                title="Author: ${commentUserInfo?.name} | Comment: ${comment}" id='${highlightId}' 
+                                                data-addBy='${commentUserInfo?._id}' 
+                                                data-text='${comment}' 
+                                                class='highlight-article' 
+                                                style='background-color: ${getHighlightColorByName(commentUserInfo.fullName).background}; border: 2px solid; padding: 0 2px; border-color: ${getHighlightColorByName(commentUserInfo.fullName).borderColor};'>
+                                                    ${secondPart}
+                                                    <div class="hightlight-popover">
+                                                        <div>
+                                                            <img style="width: 40px; height: 40px;" src="/assets/img/avatar/user.png" alt="${commentUserInfo?.name}" />
+                                                        </div>
+                                                        <div style="padding-left: 10px">
+                                                            <strong>${commentUserInfo?.name}</strong><br>
+                                                            <span class="text-span">${comment}</span>                                                        
+                                                        </div>
+                                                    </div>
+                                                </span>` 
+                    innerHTML += thirdPart;
                     textNode.innerHTML = innerHTML;
                 }
             }
