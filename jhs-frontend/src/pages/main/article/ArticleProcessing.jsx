@@ -213,7 +213,7 @@ const ArticleProcessing = () => {
                                                 data-addBy='${commentUserInfo?._id}' 
                                                 data-text='${comment}' 
                                                 class='highlight-article' 
-                                                style='background-color: ${getHighlightColorByName(commentUserInfo.fullName).background}; border: 2px solid; padding: 0 2px; border-color: ${getHighlightColorByName(commentUserInfo.fullName).borderColor};'>
+                                                style='background-color: ${getHighlightColorById(commentUserInfo._id).background}; border: 2px solid; padding: 0 2px; border-color: ${getHighlightColorById(commentUserInfo._id).borderColor};'>
                                                     ${secondPart}
                                                     <div class="hightlight-popover">
                                                         <div>
