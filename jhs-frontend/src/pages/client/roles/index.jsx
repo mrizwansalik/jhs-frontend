@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getRoles } from '../../../store/admin/roles/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Roles = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const Roles = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+            !checkAdministration() && navigate('/system');
     dispatch(
       getRoles({
         body: {},

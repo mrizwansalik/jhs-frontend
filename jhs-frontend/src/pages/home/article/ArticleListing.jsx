@@ -179,7 +179,7 @@ const ArticleListing = () => {
                       </a>
                       <span className="fs-xs opacity-20 mt-2 mx-3">|</span>
                       <span className="fs-sm text-body-secondary mt-2">
-                        {moment(data?.publishedAt)?.format("LL")}
+                        {moment(data?.publishedAt).format("LL")}
                       </span>
                       <span className="fs-xs opacity-20 mt-2 mx-3">|</span>
                       <a className="badge text-nav fs-xs border mt-2" href="#">

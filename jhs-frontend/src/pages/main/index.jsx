@@ -94,10 +94,10 @@ import EditorRating from './articleRating/EditorRating';
 import Rating from './articleRating/Rating';
 import ReviewerRating from './articleRating/ReviewerRating';
 
-const ClientRoutes = (isLoggedIn) => [
+const ClientRoutes = (isLoggedIn, location) => [
     {
         path: '/main/dashboard/',
-        element: isLoggedIn ? <ArticleLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ArticleLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ActiveArticle /> },
             { path: 'article/publish', element: <PublishedArticles /> },
@@ -107,7 +107,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/published/article/rating/:articleId/',
-        element: isLoggedIn ? <RatingPageLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <RatingPageLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: 'article', element: <Rating /> },
             { path: 'authors', element: <AuthorsRating /> },
@@ -117,21 +117,21 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/main/dashboard/review/',
-        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ReviewArticle /> },
         ]
     },
     {
         path: '/main/dashboard/task/',
-        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Task /> },
         ]
     },
     {
         path: '/main/task/',
-        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <AddNewTaskInformation /> },
             { path: 'add', element: <AddNewTaskInformation /> },
@@ -141,21 +141,21 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/main/dashboard/metrics/',
-        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Metrics /> },
         ]
     },
     {
         path: '/main/article/getStarted',
-        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <GetStarted /> },
         ]
     },
     {
         path: '/main/article/:articleId/showArticle/',
-        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleInformation /> },
             { path: 'revision', element: <ArticleRevisionInformation /> },
@@ -164,7 +164,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/main/article/:articleId/process/',
-        element: isLoggedIn ? <ClientUserFullLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserFullLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleProcessing /> },
             { path: 'chat', element: <ArticleProcessingChat /> },
@@ -172,7 +172,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: 'main/article/:articleId/edit/',
-        element: isLoggedIn ? <CreateArticleLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <CreateArticleLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Title /> },
             { path: 'title', element: <Title /> },
@@ -197,7 +197,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: 'main/article/:articleId/revision/',
-        element: isLoggedIn ? <ArticleRevisionLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ArticleRevisionLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <RevisionTitle /> },
             { path: 'title', element: <RevisionTitle /> },
@@ -221,7 +221,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: 'main/article/:articleId/languageCorrection/',
-        element: isLoggedIn ? <ArticleLanguageCorrectionLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ArticleLanguageCorrectionLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <LanguageCorrectionTitle /> },
             { path: 'title', element: <LanguageCorrectionTitle /> },
@@ -244,7 +244,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: 'main/article/:articleId/previewDraft',
-        element: isLoggedIn ? <ClientUserFullLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserFullLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleDraft /> },
         ]
@@ -252,7 +252,7 @@ const ClientRoutes = (isLoggedIn) => [
 
     {
         path: 'main/chat',
-        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientUserLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Chat /> },
         ]

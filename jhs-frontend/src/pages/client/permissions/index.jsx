@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Filter from 'components/Filter';
 import Pagination from 'components/pagination/Pagination';
 import { getPermissions } from 'store/admin/permissions/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Permissions = () => {
 
@@ -26,6 +27,7 @@ const Permissions = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    !checkAdministration() && navigate('/system');
     dispatch(getPermissionsAction);
   }, []);
 

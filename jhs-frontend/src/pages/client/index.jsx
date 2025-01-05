@@ -35,6 +35,10 @@ import Category from './category';
 import CreateCategory from './category/create';
 import UpdateCategory from './category/update';
 
+import ArticleRatingList from './articleRatingList';
+import CreateArticleRatingList from './articleRatingList/create';
+import UpdateArticleRatingList from './articleRatingList/update';
+
 import ArticleType from './articleType';
 import CreateArticleType from './articleType/create';
 import UpdateArticleType from './articleType/update';
@@ -52,24 +56,24 @@ import CreateInvoice from './invoice/create';
 import UpdateInvoice from './invoice/update';
 import ShowInvoice from './invoice/show';
 
-const ClientRoutes = (isLoggedIn) => [
+const ClientRoutes = (isLoggedIn, location) => [
     {
         path: '/system',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ProfileOverview /> },
         ]
     },
     {
         path: '/system/settings',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Settings /> },
         ]
     },
     {
         path: '/system/users/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Users /> },
             { path: 'add', element: <AddUserPage /> },
@@ -78,7 +82,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/permissions/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Permissions /> },
             { path: 'create', element: <CreatePermission /> },
@@ -87,7 +91,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/roles/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Roles /> },
             { path: 'create', element: <CreateRole /> },
@@ -96,7 +100,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/journal/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Journal /> },
             { path: 'update', element: <UpdateJournal /> },
@@ -104,7 +108,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/company/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Company /> },
             { path: 'update', element: <UpdateCompany /> },
@@ -112,7 +116,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/category/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Category /> },
             { path: 'create', element: <CreateCategory /> },
@@ -120,8 +124,17 @@ const ClientRoutes = (isLoggedIn) => [
         ]
     },
     {
+        path: '/system/articleRatingList/',
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
+        children: [
+            { path: '', element: <ArticleRatingList /> },
+            { path: 'create', element: <CreateArticleRatingList /> },
+            { path: ':articleRatingListId/edit', element: <UpdateArticleRatingList /> },
+        ]
+    },
+    {
         path: '/system/articleMeta/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleMeta /> },
             { path: 'create', element: <CreateArticleMeta /> },
@@ -130,7 +143,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/articleStatus/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleStatus /> },
             { path: 'create', element: <CreateArticleStatus /> },
@@ -139,7 +152,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/articleType/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <ArticleType /> },
             { path: 'create', element: <CreateArticleType /> },
@@ -148,7 +161,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/department/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Departments /> },
             { path: 'create', element: <CreateDepartment /> },
@@ -157,7 +170,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/services/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Services /> },
             { path: 'create', element: <CreateServices /> },
@@ -166,7 +179,7 @@ const ClientRoutes = (isLoggedIn) => [
     },
     {
         path: '/system/invoice/',
-        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" />,
+        element: isLoggedIn ? <ClientLayout /> : <Navigate to="/login" state={{ intendedPath: location.pathname  }} />,
         children: [
             { path: '', element: <Invoice /> },
             { path: 'create', element: <CreateInvoice /> },

@@ -111,12 +111,26 @@ exports.addEditorRating = async (data) => {
 };
 
 exports.addArticleRating = async (data) => {
+
+        const existingRating = await ArticleRating.findOne({
+                article_id: data.article_id,
+                rater_id: data.rater_id,
+            });
+            
+        if (existingRating) {
+                return {
+                        message: 'This user has already rated this article.',
+                        success: false,
+                }
+        }
+
         // create new Rating Status object
         const articleRating = new ArticleRating({
                 article_id: data.article_id,
                 rater_id: data.rater_id,
                 score: data.score,
                 comment: data.comment,
+                rating_list: data.rating_list,
         });
         const articleRatingResult = await articleRating.save();
 

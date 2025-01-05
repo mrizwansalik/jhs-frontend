@@ -3,7 +3,8 @@ import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { useState, useRef, useEffect } from 'react';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
+//import DateRangePicker from 'react-bootstrap-daterangepicker';
+
 
 const DateRange = (props) => {
     const filter = useSelector((state) => state.filters);
@@ -47,10 +48,10 @@ const DateRange = (props) => {
 
     return (
         <>
-            <DateRangePicker ref={dateRangePickerRef} initialSettings={{ maxDate }}
+            {/* <DateRangePicker ref={dateRangePickerRef} initialSettings={{ maxDate }}
                 onEvent={handleEvent} onCallback={handleCallback}>
                 <input type="text" className="form-control input-group date-range-picker mt-3 ps-3 fs-6" />
-            </DateRangePicker>
+            </DateRangePicker> */}
         </>
     );
 };

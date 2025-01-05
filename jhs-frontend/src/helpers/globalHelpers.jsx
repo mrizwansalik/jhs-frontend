@@ -96,6 +96,7 @@ export const getModulePrefix = (endpoint = "", module = "") => {
   if (module === "invoice") return `${module}/${endpoint}`;
   if (module === "journal") return `${module}/${endpoint}`;
   if (module === "company") return `${module}/${endpoint}`;
+  if (module === "articleRatingList") return `${module}/${endpoint}`;
   if (module === "department") return `${module}/${endpoint}`;
   if (module === "category") return `${module}/${endpoint}`;
   if (module === "articleStatus") return `${module}/${endpoint}`;

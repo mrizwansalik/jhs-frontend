@@ -34,7 +34,7 @@ const create = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('company-add') && navigate('/not-found');
+            !checkFeaturePermission('company-add') && navigate('/system/category');
         }
     }, [permission]);
 

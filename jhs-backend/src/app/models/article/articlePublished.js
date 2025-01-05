@@ -132,7 +132,7 @@ const articlePublishedSchema = new Schema(
         }],
         rating: [{
             type: Schema.Types.ObjectId,
-            ref: "publicationRating",
+            ref: "articleRating",
         }],
     },
 );

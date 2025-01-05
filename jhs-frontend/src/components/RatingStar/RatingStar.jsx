@@ -1,5 +1,3 @@
-
-
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import style from './star-rating-style.module.css';
@@ -9,21 +7,21 @@ const RatingStar = ({ onRatingChange }) => {
    const [rating, setRating] = useState(0);
 
    useEffect(() => {
-     // Initialize Bootstrap tooltips after the component renders
-     const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-     tooltipElements.forEach((tooltipElement) => {
-       new window.bootstrap.Tooltip(tooltipElement);
-     });
+      // Initialize Bootstrap tooltips after the component renders
+      const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltipElements.forEach((tooltipElement) => {
+         new window.bootstrap.Tooltip(tooltipElement);
+      });
    }, []);
- 
+
    const handleRating = (index) => {
-     setRating(index + 1);
-     if (onRatingChange) onRatingChange(index + 1); // Notify parent about the change
+      setRating(index + 1);
+      if (onRatingChange) onRatingChange(index + 1); // Notify parent about the change
    };
 
    return (
-      <section className="p-1 d-flex w-100">
-         <ul className="rating list-unstyled d-flex" style={{ gap: "10px" }}>
+      <section className="p-1 pb-0d-flex w-100">
+         <ul className="rating  mb-1 list-unstyled d-flex" style={{ gap: "10px" }}>
             {["Bad", "Poor", "OK", "Good", "Excellent"].map((tooltip, index) => (
                <li key={index}>
                   <i

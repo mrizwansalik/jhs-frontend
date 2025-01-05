@@ -23,7 +23,7 @@ const Journal = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('journal-view') && navigate('/not-found');
+            !checkFeaturePermission('journal-view') && navigate('/system');
         }
     }, [permission]);
 

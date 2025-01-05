@@ -4,7 +4,6 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import UpdateButton from '../../../../components/button/Button';
-import { updateDraftArticle } from '../../../../store/main/articles/actions'
 
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';

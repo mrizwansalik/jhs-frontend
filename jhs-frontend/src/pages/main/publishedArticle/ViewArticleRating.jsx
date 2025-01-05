@@ -1,158 +1,131 @@
 /* eslint-disable */
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 import ToArticleRating from "../articleRating/listing/ToArticleRating";
 import { Link } from "react-router-dom";
-const auth = JSON.parse(localStorage.getItem('auth'));
+import DisplayStar from "components/RatingStar/DisplayStar";
+import moment from "moment";
 
 const ViewArticleRating = () => {
-
+    const auth = JSON.parse(localStorage.getItem("auth"));
     const articleInfo = useSelector((state) => state.home.single);
 
+    // Memoized value to avoid recalculations
+    const checkYouRated = useMemo(() => {
+        if (auth && articleInfo?.rating) {
+            return articleInfo.rating.some((rating) => {
+                return rating?.rater_id?._id === auth?.user?.id;
+            });
+        }
+        return false;
+    }, [auth, articleInfo]);
+
     return (
-        <>
-            <div
-                className="row pb-md-4"
-                style={{
-                    zIndex: 900,
-                }}
-            >
-                {/* Relevant article sidebar */}
-                <aside className="col-lg-3 col-md-12 col-sm-12 mb-4" style={{ marginTop: "-115px" }}>
-                    <div
-                        className="position-sticky mx-0 px-2 top-0"
-                        style={{ paddingTop: 125 }}
-                    >
-                        <div className="position-lg-sticky top-0">
-                            <div className="ml-4">
-                                <div className="card h-100 shadow rounded-3 p-3 my-3 p-sm-4">
-                                    {
-                                        auth && auth.user && auth.authenticated ?
-                                            <ToArticleRating articleId={articleInfo?._id} />
-                                            :
-                                            <Link to='/login' className="btn btn-sm btn-primary me-xl-4" ><i className="ai-play fs-xl me-2 ms-n1" />Login to rate Article</Link>
-                                    }
+        <div className="container-fluid">
+            <div className="row pb-md-4">
+                {/* Article Ratings */}
+                <div className="col-12">
+                    <div className="card shadow-sm rounded-3 mb-4">
+                        <div className="card-body">
+                            <h2 className="h5 card-title mb-4">Article Ratings</h2>
+
+                            {/* Authentication & Rating Section */}
+                            {!auth ? (
+                                <div className="p-4 text-center">
+                                    <Link to="/login" className="btn btn-primary">
+                                        Login to rate Article
+                                    </Link>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-                {/* Relevant article data */}
-                <div className="col-lg-9 col-md-12 col-sm-12 pb-2 pb-md-0 mb-4 mb-md-0">
-                    <div className="card h-100 shadow rounded-3 mb-4 mt-4">
-                        <div className="card-body pb-0">
-                            <h2 className="h5 card-title text-capitalize">Article Rating</h2>
-                            {
-                                articleInfo?.rating?.map((commentItem, index) => {
+                            ) : (
+                                !checkYouRated && (
+                                    <div className="p-4">
+                                        <ToArticleRating articleId={articleInfo?._id} />
+                                    </div>
+                                )
+                            )}
 
-                                    let commentUserInfo = getArticleUserInfo(commentItem.addBy)
-
-                                    return (
-                                        <div key={`commentItem_${commentItem._id}`} className="border-bottom mt-2 mb-4">
-                                            <div className="d-flex align-items-top pb-1 mb-1">
-                                                <div className="rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-                                                    style={{
-                                                        width: '48px',
-                                                        height: '48px',
-                                                        backgroundImage: `url(${(commentUserInfo?.file) ? `${import.meta.env.VITE_REACT_APP_URL}/public/uploads/profile/${commentUserInfo?.file}` : '/assets/img/avatar/user.png'})`
-                                                    }}
-                                                    alt="Comment author"
-                                                />
-                                                <div className="ps-3">
-                                                    <h6 className="mb-0">{commentUserInfo?.name ?? "System User"}</h6>
-                                                    <span className="fs-sm text-muted mb-1">{commentItem.commenterType}</span>
-                                                    <p className="pb-2 mb-0" style={{ textAlign: "justify", textJustify: "inter-word" }}>
-                                                        {commentItem.text}
-                                                    </p>
+                            {/* Display Ratings */}
+                            {articleInfo?.rating?.length ? (
+                                articleInfo.rating.map((ratingItem) => (
+                                    <div key={ratingItem._id} className="p-3 mb-3 border rounded">
+                                        {/* Collapsible Link */}
+                                        <a
+                                            href={`#commentCollapse_${ratingItem._id}`}
+                                            className="d-flex align-items-center text-decoration-none text-dark"
+                                            data-bs-toggle="collapse"
+                                            role="button"
+                                            aria-expanded="false"
+                                            aria-controls={`commentCollapse_${ratingItem._id}`}
+                                        >
+                                            {/* User Avatar */}
+                                            <div
+                                                className="rounded-circle bg-size-cover bg-position-center flex-shrink-0"
+                                                style={{
+                                                    width: "40px",
+                                                    height: "40px",
+                                                    backgroundImage: `url(${ratingItem?.rater_id?.file
+                                                        ? `${import.meta.env.VITE_REACT_APP_URL}/public/uploads/profile/${ratingItem?.rater_id?.file}`
+                                                        : "/assets/img/avatar/user.png"
+                                                    })`,
+                                                }}
+                                            />
+                                            {/* User Info */}
+                                            <div className="ms-3 w-100">
+                                                <div className="d-flex justify-content-between align-items-center">
+                                                    <h6 className="mb-0">{ratingItem?.rater_id?.full_name ?? "Anonymous User"}</h6>
+                                                    <small className="text-muted">
+                                                        {moment(ratingItem?.createdAt).format("LLL")}
+                                                    </small>
                                                 </div>
+                                                <DisplayStar rating={ratingItem.score} />
+                                                {ratingItem.comment && (
+                                                    <p className="text-muted mb-1 small">
+                                                        <span className="ai-message"></span> {ratingItem.comment}
+                                                    </p>
+                                                )}
                                             </div>
-                                            {
-                                                commentItem?.replies?.map((reply, index) => {
+                                        </a>
 
-                                                    let replyUserInfo = getArticleUserInfo(reply.addBy)
-                                                    let replyUserTitle = getArticleUserTitle(reply.addBy);
-                                                    return (
-                                                        <div key={`commentItemReplies${reply._id}`} className="card card-body p-3 border-0 bg-secondary mb-3">
-                                                            <div className="d-flex align-items-center">
-                                                                <div className="rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-                                                                    style={{
-                                                                        width: '48px',
-                                                                        height: '48px',
-                                                                        backgroundImage: `url(${(replyUserInfo?.file) ? `${import.meta.env.VITE_REACT_APP_URL}/public/uploads/profile/${replyUserInfo?.file}` : '/assets/img/avatar/user.png'})`
-                                                                    }}
-                                                                    alt="Comment author"
-                                                                />
-                                                                <div className="ps-3" >
-                                                                    <h6 className="mb-0">{replyUserInfo?.name ?? "System User"}</h6>
-                                                                    <span className="fs-sm text-muted">{replyUserTitle}</span>
-                                                                    {
-
-                                                                        reply.type === "image" ? (
-                                                                            <>
-                                                                                <div className="d-flex align-items-end justify-content-start mb-1">
-                                                                                    <img
-                                                                                        className="border border-1 rounded-2 m-2 p-2 center-block"
-                                                                                        style={{ width: "60%" }}
-                                                                                        src={`${import.meta.env
-                                                                                            .VITE_REACT_APP_URL
-                                                                                            }/public/uploads/${reply?.file}`}
-                                                                                    />
-                                                                                </div>
-                                                                                <div className="fs-xs text-muted">
-                                                                                    {reply?.text}
-                                                                                </div>
-                                                                            </>
-                                                                        ) : reply.type === "file" ? (
-                                                                            <div className="message-box-start text-dark">
-                                                                                <a
-                                                                                    className="d-flex align-items-top text-decoration-none pb-2"
-                                                                                    href="#"
-                                                                                >
-                                                                                    <i className="ai-file text-black display-6 mt-1 pe-1 me-2"></i>
-                                                                                    <div className="order-sm-1 pe-sm-3 me-xl-4">
-                                                                                        <p className="mb-1 st text-black">
-                                                                                            <strong>
-                                                                                                {reply.text}
-                                                                                            </strong>
-                                                                                        </p>
-                                                                                        <div className="fs-xs text-muted">
-                                                                                            File: {reply?.file}
-                                                                                        </div>
-                                                                                        <a
-                                                                                            className="btn btn-link p-0"
-                                                                                            href={`${import.meta.env.VITE_REACT_APP_URL}/public/uploads/${reply?.file}`}
-                                                                                            target="_blank"
-                                                                                            rel="Click to Download file"
-                                                                                        >
-                                                                                            Download{" "}
-                                                                                            <i className="ai-download ms-2"></i>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </a>
-                                                                            </div>
-                                                                        ) : (
-
-                                                                            <div className="text-dark">
-                                                                                {reply.text}
-                                                                            </div>
-                                                                        )
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    );
-                                                })
-                                            }
+                                        {/* Collapsible Content */}
+                                        <div className="collapse mt-2" id={`commentCollapse_${ratingItem._id}`}>
+                                            <div className="rounded border bg-secondary px-4">
+                                            {ratingItem.rating_list?.length > 0 && (
+                                                <div className="table-responsive ">
+                                                    <table className="table table-sm table-borderless mt-2">
+                                                        <thead>
+                                                            <tr className="text-muted small">
+                                                                <th>Item</th>
+                                                                <th>Score</th>
+                                                                <th>Comment</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {ratingItem.rating_list.map((listItem, idx) => (
+                                                                <tr key={listItem._id || idx}>
+                                                                    <td>{listItem.rating_item?.title ?? "Untitled"}</td>
+                                                                    <td><DisplayStar rating={listItem.score} /></td>
+                                                                    <td className="text-muted small">{listItem.comment || "N/A"}</td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            )}
+                                            </div>
                                         </div>
-                                    );
-                                })
-                            }
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-center text-muted">
+                                    No ratings available for this article yet.
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

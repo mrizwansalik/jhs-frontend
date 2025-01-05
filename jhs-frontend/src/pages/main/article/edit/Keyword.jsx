@@ -16,7 +16,7 @@ const Keyword = () => {
     const articleInfo = useSelector((state) => state.article.singleDraft);
     //const departments = useSelector((state) => state.departments.list);
 
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState([]);
 
     const {
         register,
@@ -27,7 +27,9 @@ const Keyword = () => {
 
     useEffect(() => {
         reset();
-        setSelected(articleInfo?.keywords?.map((keyword) => keyword));
+        if(articleInfo?.keywords?.length > 0 ){
+            setSelected(articleInfo?.keywords?.map((keyword) => keyword));
+        }
     }, [articleInfo]);
 
     const updateDraftArticleHandle = (formData) => {
@@ -78,7 +80,7 @@ const Keyword = () => {
                             </div>
                             <div className="col-12 d-flex justify-content-end pt-3">
                                 <Link className="btn btn-secondary" to='/main/dashboard/article/draft'>Cancel</Link>
-                                <UpdateButton disabled={selected.length <= 2 ? true : false} className='btn btn-primary ms-3' title="Save & Continue" type='submit' />
+                                <UpdateButton disabled={selected?.length <= 2 ? true : false} className='btn btn-primary ms-3' title="Save & Continue" type='submit' />
                             </div>
                         </div>
                     </form>

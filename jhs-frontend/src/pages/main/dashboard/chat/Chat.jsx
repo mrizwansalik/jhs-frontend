@@ -12,7 +12,6 @@ import { config as mainConfig } from '../../../../config/config';
 import { convertDateTime } from 'helpers';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone'
-import { Link } from 'react-router-dom';
 
 
 const initials = {

@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { History } from '../../routes/NavigationSetter';
 import { request } from '../../helpers/request';
 import { logOutUser } from 'helpers/globalHelpers';
 import { logout } from 'store/auth/actions';

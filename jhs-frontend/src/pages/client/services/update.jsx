@@ -26,7 +26,7 @@ const Update = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('services-update') && navigate('/not-found');
+            !checkFeaturePermission('services-update') && navigate('/system/services');
         }
     },[permission]);
 

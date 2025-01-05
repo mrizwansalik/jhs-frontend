@@ -42,7 +42,7 @@ const CurrentIssues = () => {
                         <div className="card-body pb-4">
                            <div className="d-flex align-items-center mb-4 mt-n1">
                               <span className="fs-sm text-muted">
-                                 {`${moment(article?.publishedAt)?.fromNow()}`}
+                                 {`${moment(article?.publishedAt).fromNow()}`}
                               </span>
                               <span className="fs-xs opacity-20 mx-3">|</span>
                               <span className="badge border-primary text-primary fs-xs border mt-2">

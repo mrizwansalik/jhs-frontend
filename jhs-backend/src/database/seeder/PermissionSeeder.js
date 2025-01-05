@@ -63,6 +63,16 @@ class PermissionSeeder {
                     ],
                 },
                 {
+                    name: "Article Rating List",
+                    slug: "articleRatingList",
+                    feature: [
+                        { name: "Add", slug: "add" },
+                        { name: "Update", slug: "update" },
+                        { name: "Delete", slug: "delete" },
+                        { name: "View", slug: "view" },
+                    ],
+                },
+                {
                     name: "Services",
                     slug: "services",
                     feature: [

@@ -5,11 +5,11 @@ import clientRoutes from '../pages/client';
 import mainClientRoute from '../pages/main';
 import NotFound from '../pages/NotFound';
 
-const routes = (isLoggedIn) => [
+const routes = (isLoggedIn, location) => [
     ...HomeRoutes,
-    ...authRoutes(isLoggedIn),
-    ...clientRoutes(isLoggedIn),
-    ...mainClientRoute(isLoggedIn),
+    ...authRoutes(isLoggedIn, location),
+    ...clientRoutes(isLoggedIn, location),
+    ...mainClientRoute(isLoggedIn, location),
     {
         path: '*',
         element: <NotFound />,

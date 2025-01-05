@@ -16,7 +16,7 @@ const ReorderableContainer = ({ children, items: defaultItems, onReorder }) => {
   const [items, setItems] = useState(defaultItems);
   const notInitialRender = useRef(false)
 
-  useEffect(() => setItems(items), [defaultItems, setItems]);
+  useEffect(() => setItems(defaultItems), [defaultItems, setItems]);
 
   useEffect(() => {
     if (notInitialRender.current && onReorder) onReorder(items);
@@ -27,19 +27,13 @@ const ReorderableContainer = ({ children, items: defaultItems, onReorder }) => {
     if (!over) {
       return;
     }
-const activeIndex = items.indexOf(active.id);
-const overIndex = items.indexOf(over.id);
-console.log(activeIndex, overIndex)
+
     if (active.id !== over.id) {
-      
-      const oldIndex = items.findIndex(({ id }) => id === active.id)
-      const newIndex = items.findIndex(({ id }) => id === over.id)
-      const newItemsArray = arrayMove(items, oldIndex, newIndex);
-// console.log(items, oldIndex, newIndex, newItemsArray)
-      // setItems(() => {
-      //   console.log(items)
-      //   return arrayMove(items, activeIndex, overIndex);
-      // });
+      const oldIndex = items.findIndex((item) => item.id == active.id)
+      const newIndex = items.findIndex((item) => item.id == over.id)
+      setItems((items) => {
+        return arrayMove(items, oldIndex, newIndex);
+      });
     }
   };
 

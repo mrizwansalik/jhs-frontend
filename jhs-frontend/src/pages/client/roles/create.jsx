@@ -9,6 +9,7 @@ import AddRolesButton from '../../../components/button/Button';
 // functions
 import { createRole } from '../../../store/admin/roles/actions';
 import { getPermissions } from '../../../store/admin/permissions/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Create = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Create = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        !checkAdministration() && navigate('/system');
     }, []);
 
     useEffect(() => {

@@ -1,7 +1,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
-
-import Popover from 'components/Popover';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import HighlightPopover from 'components/Popover/HighlightPopover';
 import { toggleModal } from "helpers/globalHelpers";
 
 const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelectedCategory, setSelectedText}) => {
@@ -46,9 +47,15 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
             }
         };
 
+        const handleHover = (event) => {
+            console.log(event);
+        }
+
         documentSelectWithId.addEventListener('mouseup', handleSelection);
+        document.addEventListener('hover', handleHover);
 
         return () => {
+            document.addEventListener('hover', handleHover);
             documentSelectWithId.removeEventListener('mouseup', handleSelection);
         };
     }, []);
@@ -56,23 +63,14 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
     return (
         <>
             {showPopover && (
-                <Popover id='selectTextPopover' top={popoverPosition.top} left={popoverPosition.left}>
-                <div class="container mt-5" >
-                <div class="toolbar">
-                    <i class="fas fa-pencil-alt" onClick={() => {
+                <HighlightPopover id='selectTextPopover' top={popoverPosition.top} left={popoverPosition.left}>
+                    <button type="button" className="btn" style={{ background: 'transparent', border: 'none', padding: '0px' }} onClick={() => {
                         setShowPopover(false);
                         toggleModal('#addCommentModel')
-                     }}></i>
-                </div></div></Popover>
-                // <Popover id='selectTextPopover' top={popoverPosition.top} left={popoverPosition.left}>
-                //     <p>Add comment for discussion</p>
-                //     <button type="button" className="btn btn-success mb-2 me-2" onClick={() => {
-                //         setShowPopover(false);
-                //         toggleModal('#addCommentModel')
-                //     }}>
-                //         <i className="ai-message me-2" /> Add Comment
-                //     </button>
-                // </Popover>
+                    }}>
+                        <FontAwesomeIcon icon={faPencil} />
+                    </button>
+                </HighlightPopover>
             )}
             <div ref={popoverRef} id={id}>
                 {children}

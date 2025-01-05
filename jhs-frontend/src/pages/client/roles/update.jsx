@@ -10,6 +10,7 @@ import EditRoleButton from '../../../components/button/Button';
 import { updateRole } from '../../../store/admin/roles/actions';
 import { getPermissions } from '../../../store/admin/permissions/actions';
 import { getRole } from '../../../store/admin/roles/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Update = () => {
     let { roleId } = useParams();
@@ -29,6 +30,7 @@ const Update = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        !checkAdministration() && navigate('/system');
         dispatch(
             getPermissions({
                 body: {},

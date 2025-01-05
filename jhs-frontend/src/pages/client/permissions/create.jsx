@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 // functions
 import { createPermission } from '../../../store/admin/permissions/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Create = () => {
     const [selected, setSelected] = useState('');
@@ -21,6 +22,7 @@ const Create = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        !checkAdministration() && navigate('/system');
     }, []);
 
     const addPermissionHandle = (formData) => {

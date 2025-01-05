@@ -13,7 +13,7 @@ const LanguageCorrectionKeyword = () => {
     const navigate = useNavigate();
     const articleInfo = useSelector((state) => state.articleLanguageCorrection.single);
 
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState([]);
 
     const {
         register,
@@ -24,7 +24,9 @@ const LanguageCorrectionKeyword = () => {
 
     useEffect(() => {
         reset();
-        setSelected(articleInfo?.keywords?.map((keyword) => keyword));
+        if(articleInfo?.keywords?.length > 0 ){
+            setSelected(articleInfo?.keywords?.map((keyword) => keyword));
+        }
     }, [articleInfo]);
 
     const updateDraftArticleHandle = (formData) => {
@@ -75,7 +77,7 @@ const LanguageCorrectionKeyword = () => {
                             </div>
                             <div className="col-12 d-flex justify-content-end pt-3">
                                 <Link className="btn btn-secondary" to='/main/dashboard'>Cancel</Link>
-                                <UpdateButton disabled={selected.length <= 2 ? true : false} className='btn btn-primary ms-3' title="Save & Continue" type='submit' />
+                                <UpdateButton disabled={selected?.length <= 2 ? true : false} className='btn btn-primary ms-3' title="Save & Continue" type='submit' />
                             </div>
                         </div>
                     </form>

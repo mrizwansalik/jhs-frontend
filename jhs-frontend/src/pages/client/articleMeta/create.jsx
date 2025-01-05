@@ -24,7 +24,7 @@ const Create = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('articlemeta-add') && navigate('/not-found');
+            !checkFeaturePermission('articlemeta-add') && navigate('/system/articleMeta');
         }
     },[permission]);
 

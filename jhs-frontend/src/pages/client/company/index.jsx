@@ -23,7 +23,7 @@ const Company = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('company-view') && navigate('/not-found');
+            !checkFeaturePermission('company-view') && navigate('system');
         }
     }, [permission]);
 

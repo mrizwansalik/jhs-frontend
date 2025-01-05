@@ -34,7 +34,7 @@ const AddUserPage = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('user-add') && navigate('/not-found');
+            !checkFeaturePermission('user-add') && navigate('/system/users');
         }
     }, [permission]);
 

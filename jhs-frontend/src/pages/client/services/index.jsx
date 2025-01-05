@@ -22,7 +22,7 @@ const Services = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('services-view') && Navigate('/not-found');
+            !checkFeaturePermission('services-view') && Navigate('/system');
         }
     },[permission]);
     

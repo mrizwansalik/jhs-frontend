@@ -26,7 +26,7 @@ const UpdateMeta = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('articlemeta-update') && navigate('/not-found');
+            !checkFeaturePermission('articlemeta-update') && navigate('/system/articleMeta');
         }
     },[permission]);
 

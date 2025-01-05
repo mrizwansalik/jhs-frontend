@@ -17,6 +17,7 @@ const EditUserPage = () => {
     let { userId } = useParams();
     const userInfo = useSelector((state) => state.user.single);
     const departments = useSelector((state) => state.departments.list);
+    const permission = useSelector((state) => state.profile.role);
 
     const {
         register,
@@ -34,6 +35,12 @@ const EditUserPage = () => {
         dispatch(getUser({ body: {}, options: { id: userId, btnLoader: true, __module: 'user', } }));
         dispatch(getPublicDepartments({ body: {}, options: { __module: 'department' } }));
     }, []);
+    
+    useEffect(() => {
+        if (permission && permission.length) {
+            !checkFeaturePermission('user-update') && navigate('/system/users');
+        }
+    }, [permission]);
 
     const updateUserHandle = (formData) => {
         dispatch(

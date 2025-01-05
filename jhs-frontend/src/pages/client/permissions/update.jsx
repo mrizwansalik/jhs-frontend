@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UpdateButton from '../../../components/button/Button';
 
 import { updatePermission, getPermission } from '../../../store/admin/permissions/actions';
+import { checkAdministration } from 'helpers/globalHelpers';
 
 const Update = () => {
     const [selected, setSelected] = useState('');
@@ -36,6 +37,7 @@ const Update = () => {
     }, [permissionId, dispatch]);
 
     useEffect(() => {
+        !checkAdministration() && navigate('/system');
         setSelected(permission?.feature?.map(({ name }) => name));
     }, [permission]);
 

@@ -65,7 +65,7 @@ const Reference = () => {
             });
         }
         setItems(arr);
-    }, [articleInfo?.article_data_id?.reference?.length]);
+    }, [articleInfo]);
 
     useEffect(() => {
         setState({ ...state, initialLoad: true });
@@ -196,8 +196,6 @@ const Reference = () => {
     if (!articleInfo || !items) {
         return "Loading";
     }
-
-    console.log("items: " , items)
 
     return (
         <>
@@ -424,17 +422,15 @@ const Reference = () => {
                                                 <ReOrderableGrid
                                                     id="broken"
                                                     items={items}
-                                                    onReorder={newItems =>{
-                                                        console.log("Reordering", newItems);
-                                                        setItems(newItems)}}
+                                                    onReorder={newItems => setItems(newItems)}
                                                 >
                                                     {items?.map((item, index) => (
                                                         <ReOrderableItem
                                                             id={item?._id ?? index}
                                                             key={"referenceItem-" + (item?.id ?? index)}
                                                             menu={[
-                                                                <DropdownItem key={"updateReferenceItem-" + item?.id} onClick={() => updateReferenceHandler(item?.id)}>Update Reference</DropdownItem>,
-                                                                <DropdownItem key={"unassignReferenceItem-" + item?.id} onClick={() => removeReferenceFromArticle(item?.id)}>Remove Reference</DropdownItem>,
+                                                                <DropdownItem key={"updateReferenceItem-" + item?._id} onClick={() => updateReferenceHandler(item?._id)}>Update Reference</DropdownItem>,
+                                                                <DropdownItem key={"unassignReferenceItem-" + item?._id} onClick={() => removeReferenceFromArticle(item?._id)}>Remove Reference</DropdownItem>,
                                                             ]}
                                                         >
                                                             {

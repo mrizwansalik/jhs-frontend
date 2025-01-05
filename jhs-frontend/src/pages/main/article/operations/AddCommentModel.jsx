@@ -7,10 +7,9 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 import { addArticleComment } from 'store/main/articles/actions';
-import { getArticleUserTitle } from 'helpers/globalHelpers';
+import { getArticleUserInfo, getArticleUserTitle } from 'helpers/globalHelpers';
 
-
-const AddCommentModel = ({articleId, selectedCategory, selectedText}) => {
+const AddCommentModel = ({articleId, selectedCategory,selectedText, onSuccess}) => {
 
         const dispatch = useDispatch();
         const user = useSelector((state) => state.profile.profile);
@@ -22,18 +21,21 @@ const AddCommentModel = ({articleId, selectedCategory, selectedText}) => {
                 reset,
         } = useForm({ reValidateMode: 'onChange' });
         
-        const addCommentHandler = (formData) => {
+        const addCommentHandler = async (formData) => {
                 formData.highlight = selectedText
-
                 let commentUserTitle = getArticleUserTitle(user?._id)
                 const data = {
                         ...formData,
                         ...selectedCategory,
                         "userType": commentUserTitle
                 }
-                dispatch(addArticleComment({body: data, options: { id: articleId, btnLoader: true, __module: 'articleProcessing', showToast: true }}));
+                const response = await dispatch(addArticleComment({body: data, options: { id: articleId, btnLoader: true, __module: 'articleProcessing', showToast: true }}))
                 //dispatch(send(socketSession, 'SET_ARTICLE_SESSION', { ...data }));
                 reset();
+                if(response.status === 200){
+                        let commentUserInfo = getArticleUserInfo(response.data.addBy);
+                        onSuccess(response.data.highlight, response.data._id, response.data.text, selectedCategory.startOffset, selectedCategory.endOffset, response.data.forArea, commentUserInfo );
+                }
                 
         }
 
@@ -47,7 +49,7 @@ const AddCommentModel = ({articleId, selectedCategory, selectedText}) => {
                                 <div className="card-body">
                                         <form id={`addComment${articleId}`} onSubmit={handleSubmit(addCommentHandler)}>
                                                 <div className="row g-3 g-sm-4 mb-3">
-                                                        <div className="col-12">
+                                                        {/* <div className="col-12">
                                                                 <label className="form-label" htmlFor="highlight">Highlight</label>
                                                                 <input disabled className={`form-control`}  
                                                                 {...register('highlight',{ 
@@ -56,7 +58,7 @@ const AddCommentModel = ({articleId, selectedCategory, selectedText}) => {
                                                                  )}
                                                                 type="text" id="highlight" value={selectedText} ></input>
                                                                 <div className="invalid-feedback"></div>
-                                                        </div>
+                                                        </div> */}
                                                         <div className="col-12">
                                                                 <label className="form-label" htmlFor="text">Comment Text</label>
                                                                 <textarea

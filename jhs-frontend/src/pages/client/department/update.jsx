@@ -8,7 +8,7 @@ import UpdateButton from '../../../components/button/Button';
 import { checkFeaturePermission } from 'helpers/globalHelpers';
 
 // functions
-import { updateDepartment,getDepartment } from '../../../store/admin/department/actions';
+import { updateDepartment, getDepartment } from '../../../store/admin/department/actions';
 
 const Update = () => {
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Update = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('department-update') && navigate('/not-found');
+            !checkFeaturePermission('department-update') && navigate('/system/department');
         }
     }, [permission, navigate]);
 

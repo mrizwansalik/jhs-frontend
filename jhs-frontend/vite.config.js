@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 import ckeditor5 from '@ckeditor/vite-plugin-ckeditor5';
 
-import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
+import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 
 import path from "path";
 
@@ -35,6 +35,14 @@ export default defineConfig({
         outDir: './build',
         emptyOutDir: true, // also necessary
         sourcemap: true,
+        chunkSizeWarningLimit: 1000,  // Adjust chunk size warning limit (in KB)
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                // Example: Move large libraries like lodash into a separate chunk
+                lodash: ['lodash'],
+                },
+            },
+        },
     },
-
 })

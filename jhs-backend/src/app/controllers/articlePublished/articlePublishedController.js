@@ -17,7 +17,7 @@ const { ArticlePublished } = require('../../models/article/articlePublished');
 
 const { addPublicationRating, addEditorRating, addReviewRating, addArticleRating } = require('../../utils/article/manageUserRatingReport');
 const { publicationRatingValidate } = require('../../models/rating/publicationRating');
-const { reviewRatingValidate } = require('../../models/rating/reviewRating');
+const { articleRatingValidate } = require('../../models/rating/articleRating');
 
 // get all article Status
 exports.getMyPublishedArticle = catchAsync(async (req, res) => {
@@ -218,10 +218,11 @@ exports.addArticleRating = catchAsync(async (req, res) => {
         rater_id: req.userId,
         score: req.body.score,
         comment: req.body.comment,
+        rating_list: req.body.rating_list
     }
 
     // validate request body using Joi Validation define in Mongoes models
-    const { error } = reviewRatingValidate(data);
+    const { error } = articleRatingValidate(data);
     if (error) {
         return res.status(422).json(
             Response.validation({ data: validateErrorFormatting(error) })
@@ -231,8 +232,14 @@ exports.addArticleRating = catchAsync(async (req, res) => {
     // add publication rating
     const result = await addArticleRating(data);
 
+    if(result.success == false){
+        return res.status(403).json(
+            Response.forbidden({ message: result.message })
+        );
+    }
+
     // send success response
-    res.status(200).json(
+    return res.status(200).json(
         Response.success({
             message: 'Review Rating',
             status: 200,

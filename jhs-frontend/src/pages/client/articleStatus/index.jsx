@@ -31,7 +31,7 @@ const ArticleStatus = () => {
 
   useEffect(() => {
     if (permission && permission.length) {
-      !checkFeaturePermission("articlestatus-view") && navigate("/not-found");
+      !checkFeaturePermission("articlestatus-view") && navigate("/system");
     }
   }, [permission]);
 

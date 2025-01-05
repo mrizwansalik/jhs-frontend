@@ -34,7 +34,7 @@ const create = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('journal-add') && navigate('/not-found');
+            !checkFeaturePermission('journal-add') && navigate('/system/journal');
         }
     }, [permission]);
 

@@ -42,6 +42,12 @@ const Users = () => {
         body: {},
         options: { __module: 'user', pagination: true },
     });
+        
+    useEffect(() => {
+        if (permission && permission.length) {
+            !checkFeaturePermission('user-view') && Navigate('/system');
+        }
+    }, [permission]);
 
     useEffect(() => {
         window.scrollTo(0, 0);

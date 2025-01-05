@@ -24,7 +24,7 @@ const Create = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('articletype-add') && navigate('/not-found');
+            !checkFeaturePermission('articletype-add') && navigate('/system/articleType');
         }
     }, [permission]);
 

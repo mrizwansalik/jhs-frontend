@@ -22,7 +22,7 @@ const ArticleMeta = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('articlemeta-view') && navigate('/not-found');
+            !checkFeaturePermission('articlemeta-view') && navigate('/system');
         }
     },[permission]);
     

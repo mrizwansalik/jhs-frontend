@@ -86,4 +86,3 @@ const ToArticleRating = ({ articleId }) => {
 };
 
 export default ToArticleRating;
-

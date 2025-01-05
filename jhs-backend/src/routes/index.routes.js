@@ -32,6 +32,8 @@ router.use('/api/articleTask/', require('./api/articleTask.routes'));
 
 router.use('/api/articlePublished/', require('./api/articlePublished.routes'));
 
+router.use('/api/articleRatingList/', require('./api/articleRatingList.routes'));
+
 router.use('/api/author/', require('./api/author.routes'));
 
 router.use('/api/chat/', require('./api/chat.routes'));

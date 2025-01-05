@@ -23,7 +23,7 @@ const Create = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('department-add') && navigate('/not-found');
+            !checkFeaturePermission('department-add') && navigate('/system/department');
         }
     }, [permission, navigate]);
 

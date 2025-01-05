@@ -23,7 +23,7 @@ const CreateInvoice = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('invoice-add') && navigate('/not-found');
+            !checkFeaturePermission('invoice-add') && navigate('/system/invoice');
         }
     },[permission]);
 

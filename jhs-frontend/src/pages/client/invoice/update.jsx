@@ -26,7 +26,7 @@ const UpdateInvoice = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('invoice-update') && navigate('/not-found');
+            !checkFeaturePermission('invoice-update') && navigate('/system/invoice');
         }
     }, [permission]);
 

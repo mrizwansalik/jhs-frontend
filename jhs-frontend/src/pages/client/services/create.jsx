@@ -23,7 +23,7 @@ const Create = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('services-add') && navigate('/not-found');
+            !checkFeaturePermission('services-add') && navigate('/system/services');
         }
     },[permission]);
 

@@ -12,7 +12,11 @@ const publicationRatingSchema = new Schema(
             ref: "articlePublished",
             required: true,
         },
-        rater_id: { type: Schema.Types.ObjectId, ref: "user", required: true },
+        rater_id: { 
+            type: Schema.Types.ObjectId, 
+            ref: "user", 
+            required: true 
+        },
         score: { type: Number, min: 0, max: 5, required: true },
         comment: { type: String },
         date: { type: Date, default: Date.now },

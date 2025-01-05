@@ -129,6 +129,7 @@ export const getArticleCommentReplies = (payload) => async (dispatch) => {
 };
 export const addArticleComment = (payload) => async (dispatch) => {
     const response = await request.makeRequest('POST', `${payload.options.id}/addComment`, payload.body, payload.options);
+    return response;
 };
 export const addCommentReply = (payload) => async (dispatch) => {
     const response = await request.makeRequest('POST', `${payload.options.id}/addCommentReply`, payload.body, payload.options);

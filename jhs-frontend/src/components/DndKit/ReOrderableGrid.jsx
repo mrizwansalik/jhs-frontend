@@ -5,7 +5,6 @@ import { ListGroup } from 'reactstrap';
 import ReorderableContainer from './ReOrderableContainer';
 
 const ReorderableGrid = ({ children, id, items, onReorder }) => {
-  console.log(children, id, items, onReorder)
   return (
     <ReorderableContainer
       items={items}

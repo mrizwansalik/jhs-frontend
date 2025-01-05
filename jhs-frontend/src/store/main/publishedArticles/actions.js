@@ -45,6 +45,9 @@ export const getPublishedArticleReviewers = (payload) => async (dispatch) => {
 
 export const addArticleRating = (payload) => async (dispatch) => {
     const response = await request.makeRequest('POST', `${payload.options.id}/addArticleRating`, payload.body, payload.options);
+    if (response.status === 200) {
+        console.log("addArticleRating");
+    }
 };
 
 export const getPublishedArticleComment = (payload) => async (dispatch) => {

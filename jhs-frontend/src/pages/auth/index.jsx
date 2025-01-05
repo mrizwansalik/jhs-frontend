@@ -7,7 +7,7 @@ import ForgetPassword from './forgetPassword';
 import Signup from './SignUp';
 import ChangePassword from './ChangePassword';
 
-const authRoutes = (isLoggedIn) => [
+const authRoutes = (isLoggedIn, location) => [
     {
         path: '/login',
         element: isLoggedIn ? <Navigate to="/" /> : <Login />,

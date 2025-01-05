@@ -17,7 +17,7 @@ const Department = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('department-view') && navigate('/not-found');
+            !checkFeaturePermission('department-view') && navigate('/system');
         }
     }, [permission, navigate]);
 

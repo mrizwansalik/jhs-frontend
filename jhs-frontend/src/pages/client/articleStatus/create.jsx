@@ -13,7 +13,6 @@ import { createArticleStatus,getAllArticleStatus } from '../../../store/admin/ar
 
 const Create = () => {
     const dispatch = useDispatch();
-    const articleStatus = useSelector((state) => state.articleStatus.list);
     const permission = useSelector((state)=>state.profile.role);
 
     const {
@@ -24,7 +23,7 @@ const Create = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('articlestatus-add') && navigate('/not-found');
+            !checkFeaturePermi0opssion('articlestatus-add') && navigate('/system/articleStatus');
         }
     },[permission]);
 

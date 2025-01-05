@@ -22,7 +22,7 @@ const ArticleType = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('articletype-view') && navigate('/not-found');
+            !checkFeaturePermission('articletype-view') && navigate('/system');
         }
     }, [permission]);
 

@@ -47,6 +47,7 @@ import { homeReducer } from './home/publishedArticle/reducers';
 import { coordinatesReducer } from './coordinates/reducers';
 import { categoryReducer } from './admin/category/reducers';
 import { homeAuthorReducer } from './home/author/reducers';
+import { articleRatingListReducer } from './admin/articleRatingList/reducers';
 
 const reducers = combineReducers({
     auth: loginReducer,
@@ -73,6 +74,7 @@ const reducers = combineReducers({
     companies: companyReducer,
     departments: departmentReducer,
     category: categoryReducer,
+    articleRatingList: articleRatingListReducer,
 
     articleStatus: articleStatusReducer,
     articleMeta: articleMetaReducer,

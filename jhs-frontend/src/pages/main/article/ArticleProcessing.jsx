@@ -33,6 +33,7 @@ import SelectTextPopover from "./operations/SelectTextPopover";
 import ArticleCommentReplyModel from "./processing/ArticleCommentReplyModel";
 import ArticleDiscussionTab from "./processing/ArticleDiscussionTab";
 import PublishArticleModel from "./operations/PublishArticleModel";
+import { getHighlightColorById } from "helpers";
 
 const ArticleProcessing = () => {
     const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const ArticleProcessing = () => {
     const articleTypes = useSelector((state) => state.articleType.list);
     const selectedArticleType = useSelector((state) => state.articleType.selected);
     const comments = useSelector((state) => state.article.comments);
+    const [selectedText, setSelectedText] = useState('');
 
     useEffect(() => {
         comments.forEach((comment) => {
@@ -51,6 +53,7 @@ const ArticleProcessing = () => {
             highlight(comment.highlight, comment._id, comment.text, comment.startOffset, comment.endOffset, comment.forArea, commentUserInfo);
         });
     }, [comments]);
+
     useEffect(() => {
         dispatch(getArticle({ body: {}, options: { id: articleId, btnLoader: true, __module: "article" } }));
         dispatch(getArticleReferencesTextList({ body: {}, options: { id: articleId, btnLoader: true, __module: 'article', } }));
@@ -70,13 +73,10 @@ const ArticleProcessing = () => {
         }
     }, [articleInfo, articleTypes]);
 
-
-
     // socket
     // getting state of Socket conn
     const socketConn = useSelector((state) => state.articleProcessingSocket.conn);
     const socketSession = useSelector((state) => state.articleProcessingSocket);
-    const [selectedText, setSelectedText] = useState('');
     let token = localStorage.getItem('accessToken');
 
     // if connection not open then Initiate Socket ArticleProcessing Connection
@@ -187,7 +187,7 @@ const ArticleProcessing = () => {
         var alreadyHighlight = document.getElementById(highlightId);
         if (alreadyHighlight == null) {
             var element = document.getElementById(forArea);
-             // var innerHTML = inputText.innerHTML;
+            // var innerHTML = inputText.innerHTML;
             // var index = innerHTML.indexOf(text);
             // let firstPart = innerHTML.substring(0, startOffset);
             // let secondPart = innerHTML.substring(endOffset, innerHTML.length);
@@ -198,8 +198,10 @@ const ArticleProcessing = () => {
             //     inputText.innerHTML = innerHTML;
             // }
             if (element) {
-                let textNode = element.firstChild.firstChild; // Assuming the content is plain text
+                console.log("other",element.firstChild)
+                let textNode = element?.firstChild?.firstChild; // Assuming the content is plain text
                 if(forArea ==="data_abstract"){
+                    console.log("abstact",element.firstChild)
                     textNode = element.firstChild
                 }
                 var innerHTML = textNode.innerHTML;
@@ -213,7 +215,7 @@ const ArticleProcessing = () => {
                                                 data-addBy='${commentUserInfo?._id}' 
                                                 data-text='${comment}' 
                                                 class='highlight-article' 
-                                                style='background-color: ${getHighlightColorById(commentUserInfo._id).background}; border: 2px solid; padding: 0 2px; border-color: ${getHighlightColorById(commentUserInfo._id).borderColor};'>
+                                                style='background-color: ${getHighlightColorById(commentUserInfo?._id)?.background}; border: 2px solid; padding: 0 2px; border-color: ${getHighlightColorById(commentUserInfo?._id)?.borderColor};'>
                                                     ${secondPart}
                                                     <div class="hightlight-popover">
                                                         <div>
@@ -426,7 +428,7 @@ const ArticleProcessing = () => {
                                                         textAlign: "justify",
                                                         textJustify: "inter-word",
                                                     }}
-                                                    id={`data_${item}`}
+                                                    id={`${item}`}
                                                 >
                                                     {htmlContentParser(articleInfo?.article_data_id[`${item}`], item)}
                                                 </div>
@@ -549,7 +551,7 @@ const ArticleProcessing = () => {
             <ActionHistoryModel />
             <PublishArticleModel />
 
-            <AddCommentModel articleId={articleInfo?._id} selectedCategory={selectedCategory} selectedText={selectedText} />
+            <AddCommentModel articleId={articleInfo?._id} selectedCategory={selectedCategory} onSuccess={(...params) => {highlight(...params)}} selectedText={selectedText}/>
 
             <ArticleCitationModel articleId={articleInfo?._id} />
             <ArticleCommentReplyModel articleId={articleId} />

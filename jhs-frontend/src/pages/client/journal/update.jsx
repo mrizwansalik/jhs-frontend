@@ -39,7 +39,7 @@ const Update = () => {
 
     useEffect(() => {
         if (permission && permission.length) {
-            !checkFeaturePermission('journal-update') && navigate('/not-found');
+            !checkFeaturePermission('journal-update') && navigate('/system/journal');
         }
     }, [permission]);
 

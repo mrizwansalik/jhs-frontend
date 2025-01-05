@@ -22,7 +22,7 @@ const Invoice = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('invoice-view') && Navigate('/not-found');
+            !checkFeaturePermission('invoice-view') && Navigate('/system');
         }
     },[permission]);
     

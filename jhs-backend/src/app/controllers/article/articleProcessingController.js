@@ -1290,7 +1290,7 @@ exports.addComment = catchAsync(async (req, res) => {
         Response.success({
             status: 200,
             message: 'Comment Reply is add for article!',
-            data: result,
+            data: commentResult,
             accessToken: req.token,
         })
     );

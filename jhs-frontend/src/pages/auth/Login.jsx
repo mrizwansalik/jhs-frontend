@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
@@ -12,6 +12,7 @@ import Toast from '../../components/Notification/Toasts';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const auth = useSelector((state) => state.auth);
   const err = useSelector((state) => state.general.errors);
   // Data
@@ -40,9 +41,11 @@ const Login = () => {
 
   useEffect(() => {
     if (auth && auth?.user && auth?.user.id) {
-      navigate('/main/dashboard');
+      const intendedPath = location.state?.intendedPath || "/main/dashboard";
+      navigate(intendedPath);
     }
   }, [auth]);
+  
   return (
     <>
       <main className="page-wrapper">

@@ -26,7 +26,7 @@ const Update = () => {
 
     useEffect(()=>{
         if(permission && permission.length){
-            !checkFeaturePermission('articletype-update') && navigate('/not-found');
+            !checkFeaturePermission('articletype-update') && navigate('/system/articleType');
         }
     },[permission]);
 

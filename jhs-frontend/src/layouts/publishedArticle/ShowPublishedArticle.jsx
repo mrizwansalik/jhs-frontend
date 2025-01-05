@@ -1,11 +1,9 @@
-/* eslint-disable */
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from 'react-helmet-async';
 
 import Header from '../../components/header/Header';
-import Loading from '../../components/loading/Loading';
 import Toasts from '../../components/Notification/Toasts';
 import Footer from '../../components/footer/Footer';
 import BackToTop from 'components/BackToTop/BackToTop';
@@ -18,6 +16,7 @@ import ViewArticleTab from "pages/main/publishedArticle/ViewArticleTab";
 import DownloadPDF from "pages/main/publishedArticle/operations/DownloadPDF";
 import { setCoordinates } from "store/coordinates/actions";
 import ComponentLoading from "components/loading/ComponentLoading";
+import DisplayStar from "components/RatingStar/DisplayStar";
 
 // Importing geo located reducer function
 
@@ -27,6 +26,8 @@ const ShowPublishedArticle = () => {
    let { articleId } = useParams();
    const articleInfo = useSelector((state) => state.home.single);
    const articleTypes = useSelector((state) => state.home.articleTypeList);
+
+   const [averageRating, setAverageRating] = useState(0);
 
    const articleTotalViews = useSelector((state) => state.home.singleArticleTotalViews);
    const articleTotalDownloads = useSelector((state) => state.home.singleArticleTotalDownloads);
@@ -71,6 +72,12 @@ const ShowPublishedArticle = () => {
             payload: selectedArticle[0],
          });
       }
+      
+
+      const totalScores = articleInfo?.rating.reduce((sum, rating) => sum + rating.score, 0);
+      const numberOfRatings = articleInfo?.rating.length;
+      setAverageRating(numberOfRatings > 0 ? (totalScores / numberOfRatings) : 0);
+      
    }, [articleInfo, articleTypes]);
 
    return (
@@ -143,6 +150,11 @@ const ShowPublishedArticle = () => {
                            <p className="m-2">
                               {articleInfo?.doi}
                            </p>
+
+                           <div className="m-2 d-flex justify-content-center">
+                              <DisplayStar rating={averageRating} />
+                           </div>
+                           
                            <div className="pb-3 mb-3 mb-lg-4">
                               <span className="btn btn-secondary bg-faded-light btn-sm mt-3 ms-3">
                                  <i className="ai-show fs-sm opacity-90 me-2" />{" "}

@@ -343,7 +343,30 @@ exports.getPublishedArticleDetail = catchAsync(async (req, res) => {
         req.params.id,
         { $inc: { views: 1 } }, // Increment viewsCount by 1
         { new: true }
-    ).populate(["articlePublished_data_id", "journal_info", "articleMatrices_data_id"]);
+    ).populate([
+            "articlePublished_data_id", "journal_info", "articleMatrices_data_id",
+            {
+                path: 'articlePublished_data_id', // Populate the `rating` field in publish article schema
+            },
+            {
+                path: 'journal_info', // Populate the `rating` field in publish article schema
+            },
+            {
+                path: 'rating', // Populate the `rating` field in publish article schema
+                model: 'articleRating',
+                populate: [
+                    {
+                        path: 'rater_id',
+                        model: 'user',
+                    },
+                    {
+                        path: 'rating_list.rating_item', // Populate `rating_item` in `rating_list`
+                        model: 'articleRatingList', // Reference the `articleRatingList` model
+                    },
+                ]
+            }
+        ]);
+    
     let location = null;
     if (req.query.latitude) {
         location = await getLocationFromCoordinates(req.query.latitude, req.query.longitude);
