@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
 import HighlightPopover from 'components/Popover/HighlightPopover';
 import { toggleModal } from "helpers/globalHelpers";
 
@@ -14,7 +14,8 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
 
     useEffect(() => {
         const documentSelectWithId = document.getElementById(id)
-        const handleSelection = () => {
+        const handleSelection = (e) => {
+            e.stopPropagation();
             const selection = window.getSelection();
             const selectedText = selection.toString().trim();
             if (selectedText !== '') {
@@ -36,8 +37,8 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
                 const rect = range.getBoundingClientRect();
 
                 setPopoverPosition({
-                    top: rect.top + window.pageYOffset + rect.height, // Adjust position for popover
-                    left: rect.left + window.pageXOffset + rect.width / 2,
+                    top: rect.top + window.pageYOffset -60, // Adjust position for popover
+                    left: rect.left + window.pageXOffset + (rect.width / 2) - 20, // Adjust position for popover
                 });
 
                 setSelectedText(selectedText);
@@ -48,14 +49,18 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
         };
 
         const handleHover = (event) => {
-            console.log(event);
+            console.log(event.target)
+            if (event.target.tagName === 'path' || event.target.className.includes('popover-body')) {
+                return true;
+            }
+            setShowPopover(false);
         }
 
         documentSelectWithId.addEventListener('mouseup', handleSelection);
-        document.addEventListener('hover', handleHover);
+        document.addEventListener('mouseup', handleHover);
 
         return () => {
-            document.addEventListener('hover', handleHover);
+            document.addEventListener('mouseup', handleHover);
             documentSelectWithId.removeEventListener('mouseup', handleSelection);
         };
     }, []);
@@ -64,11 +69,11 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
         <>
             {showPopover && (
                 <HighlightPopover id='selectTextPopover' top={popoverPosition.top} left={popoverPosition.left}>
-                    <button type="button" className="btn" style={{ background: 'transparent', border: 'none', padding: '0px' }} onClick={() => {
+                    <button type="button" className="btn btn-highlight-button" style={{ background: 'transparent', border: 'none', padding: '0px' }} onClick={() => {
                         setShowPopover(false);
                         toggleModal('#addCommentModel')
                     }}>
-                        <FontAwesomeIcon icon={faPencil} />
+                        <FontAwesomeIcon icon={faComment} size="lg" style={{ color: 'white' }} />
                     </button>
                 </HighlightPopover>
             )}

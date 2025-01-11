@@ -8,7 +8,7 @@ const ArticleDiscussionTab = ({articleId}) => {
     return (
         <div className="m-4 border-bottom"
         style={{
-            zIndex: 950,
+            zIndex: 9999,
         }}>
             <div className="d-flex align-items-center">
                 {/* Nav tabs */}

@@ -41,9 +41,9 @@ const ArticleCommentActions = ({ articleId, comment, article, socket, ActionType
         };
 
         let permissions = [];
-        if (article?.authorList.map(author => author?._id ? author?._id : author).includes(user?._id) || article?._author?._id === user?._id || article?._author === user?._id) {
+        if (article?.authorList?.map(author => author?._id ? author?._id : author).includes(user?._id) || article?._author?._id === user?._id || article?._author === user?._id) {
                 permissions.push('Author');
-        } else if (article?.reviewerList.map(reviewer => reviewer?._id ? reviewer?._id : reviewer).includes(user?._id)) {
+        } else if (article?.reviewerList?.map(reviewer => reviewer?._id ? reviewer?._id : reviewer).includes(user?._id)) {
                 permissions.push('Reviewer');
         } else if (article?.assignedTo?.id === user?._id || article?.assignedTo === user?._id) {
                 permissions.push('Reviewer');

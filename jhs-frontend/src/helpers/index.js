@@ -62,24 +62,40 @@ export const sysDate = (dateTime, returnType = 'dateTime') => {
 };
 
 const colors = [
-    { background: '#34CB79', borderColor: '#2A9F5E' },
-    { background: 'rgba(30, 129, 206, 0.90)', borderColor: 'rgba(25, 108, 172, 1)' },
-    { background: '#CF32CFE5', borderColor: '#9A249A' },
-    { background: '#FF6347', borderColor: '#CC4F39' }, 
-    { background: '#7B68EE', borderColor: '#5E4FB4' },
-    { background: '#3CB371', borderColor: '#2E8B57' },
-    { background: '#FFA07A', borderColor: '#E4886A' },
-    { background: '#9370DB', borderColor: '#7559B0' },
-    { background: '#00CED1', borderColor: '#009C9E' },
+    { background: 'rgba(52, 203, 121, 0.3)', borderColor: 'rgba(42, 159, 94, 0.5)' }, // #34CB79
+    { background: 'rgba(30, 129, 206, 0.3)', borderColor: 'rgba(30, 129, 206, 0.5)' }, // rgba(30, 129, 206, 0.2)
+    { background: 'rgba(207, 50, 207, 0.3)', borderColor: 'rgba(154, 36, 154, 0.5)' }, // #CF32CFE5
+    { background: 'rgba(255, 99, 71, 0.3)', borderColor: 'rgba(204, 79, 57, 0.5)' }, // #FF6347
+    { background: 'rgba(123, 104, 238, 0.3)', borderColor: 'rgba(94, 79, 180, 0.5)' }, // #7B68EE
+    { background: 'rgba(60, 179, 113, 0.3)', borderColor: 'rgba(46, 139, 87, 0.5)' }, // #3CB371
+    { background: 'rgba(255, 160, 122, 0.3)', borderColor: 'rgba(228, 136, 106, 0.5)' }, // #FFA07A
+    { background: 'rgba(147, 112, 219, 0.3)', borderColor: 'rgba(117, 89, 176, 0.5)' }, // #9370DB
+    { background: 'rgba(0, 206, 209, 0.3)', borderColor: 'rgba(0, 156, 158, 0.5)' }, // #00CED1
+    
+    { background: 'rgba(255, 165, 0, 0.3)', borderColor: 'rgba(255, 140, 0, 0.5)' }, // #FFA500
+    { background: 'rgba(255, 105, 180, 0.3)', borderColor: 'rgba(255, 20, 147, 0.5)' }, // #FF69B4
+    { background: 'rgba(0, 191, 255, 0.3)', borderColor: 'rgba(0, 0, 205, 0.5)' }, // #00BFFF
+    { background: 'rgba(255, 99, 71, 0.3)', borderColor: 'rgba(255, 69, 0, 0.5)' }, // #FF6347 (Extra variation)
+    
+    { background: 'rgba(255, 105, 180, 0.3)', borderColor: 'rgba(255, 20, 147, 0.5)' }, // Soft pink
+    { background: 'rgba(34, 193, 195, 0.3)', borderColor: 'rgba(253, 187, 45, 0.5)' }, // Mint to gold gradient effect
+    { background: 'rgba(75, 0, 130, 0.3)', borderColor: 'rgba(139, 0, 255, 0.5)' }, // Indigo to purple
+    { background: 'rgba(255, 215, 0, 0.3)', borderColor: 'rgba(255, 140, 0, 0.5)' }, // Gold
+    { background: 'rgba(255, 0, 255, 0.3)', borderColor: 'rgba(255, 105, 180, 0.5)' }, // Fuchsia
+    { background: 'rgba(0, 128, 128, 0.3)', borderColor: 'rgba(0, 139, 139, 0.5)' }, // Teal
+    { background: 'rgba(255, 223, 186, 0.3)', borderColor: 'rgba(255, 140, 0, 0.5)' }, // Light peach
+    { background: 'rgba(70, 130, 180, 0.3)', borderColor: 'rgba(0, 0, 128, 0.5)' }, // Steel blue
   ];
+  
+
 
 export const getHighlightColorById = (id) => {
     const idString = String(id); // Ensure the ID is treated as a string
     const hash = idString
-      .split('')
-      .reduce((acc, char) => char.charCodeAt(0) + acc, 0); // Hash the ID
+        .split('')
+        .reduce((acc, char) => char.charCodeAt(0) + acc, 0); // Hash the ID
     const index = Math.abs(hash) % colors.length; // Ensure index is within bounds
     return colors[index];
-  };
+};
 
 

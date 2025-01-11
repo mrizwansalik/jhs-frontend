@@ -27,9 +27,8 @@ const ReorderableContainer = ({ children, items: defaultItems, onReorder }) => {
     if (!over) {
       return;
     }
+
     if (active.id !== over.id) {
-      // const activeIndex = active.data.current.sortable.index;
-      // const overIndex = over.data.current?.sortable.index || 0;
       const oldIndex = items.findIndex((item) => item.id == active.id)
       const newIndex = items.findIndex((item) => item.id == over.id)
       setItems((items) => {

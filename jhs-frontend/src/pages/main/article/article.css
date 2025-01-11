@@ -107,3 +107,8 @@
     justify-content: space-between;
 }
 
+.highlight-overlay {
+    position: absolute;
+    pointer-events: none; /* Prevent the overlay from blocking interactions */
+    z-index: 10; /* Lower than modals and headers */
+  }

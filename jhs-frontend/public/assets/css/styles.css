@@ -431,6 +431,20 @@
   transform: rotate(45deg);
 } */
 
+.btn-highlight-button:before {
+  width: 300px;
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 40%;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(21, 12, 12);
+  border-left: 1px solid #0c0606;
+  border-top: 1px solid #180e0e;
+  transform: rotate(45deg);
+}
+
 .highlight-article:hover .hightlight-popover {
   display: flex;
 }
