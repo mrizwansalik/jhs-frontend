@@ -1,15 +1,19 @@
 import { getHighlightColorById } from "helpers";
-import { getArticleUserInfo } from "helpers/globalHelpers";
+import { getArticleUserInfo, toggleModal } from "helpers/globalHelpers";
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ArticleCommentActions from "./processing/ArticleCommentActions";
+import { getArticleCommentReplies } from "store/main/articles/actions";
 
 const BlogWithOverlayHighlight = ({ children }) => {
   const [highlightBoxes, setHighlightBoxes] = useState([]);
   const [hoveredBox, setHoveredBox] = useState(null); // Track which box is hovered
+  const dispatch = useDispatch();
   const comments = useSelector((state) => state.article.comments);
-
+  const articleInfo = useSelector((state) => state.article.single);
+  const socketSession = useSelector((state) => state.articleProcessingSocket);
   const blogRef = useRef();
+  const commentBoxRef = useRef();
 
   useEffect(() => {
     if (!comments || comments.length === 0) return;
@@ -26,6 +30,7 @@ const BlogWithOverlayHighlight = ({ children }) => {
         color: getHighlightColorById(comment.addBy)?.background,
         borderColor: getHighlightColorById(comment.addBy)?.borderColor,
         ...commentUserInfo,
+        ...comment,
       };
     });
 
@@ -42,61 +47,94 @@ const BlogWithOverlayHighlight = ({ children }) => {
       setHighlightBoxes([]);
       return;
     }
-
     const blogContainer = blogRef.current;
     if (!blogContainer) return;
-
     const textNodes = [];
     const boxes = [];
-
     const walker = document.createTreeWalker(
       blogContainer,
       NodeFilter.SHOW_TEXT,
       null,
       false
     );
-
     let node;
     while ((node = walker.nextNode())) {
       textNodes.push(node);
     }
+    const fullText = textNodes.map((node) => node.nodeValue).join("");
 
-    let currentOffset = 0; // Track the overall offset in the content
-    textNodes.forEach((node) => {
-      const nodeStart = currentOffset;
-      const nodeEnd = currentOffset + node.nodeValue.length;
-
-      terms.forEach((term) => {
-        if (term.startOffset >= nodeStart && term.endOffset <= nodeEnd) {
-          // Term fully contained in this node
-          const range = document.createRange();
-          range.setStart(node, term.startOffset - nodeStart);
-          range.setEnd(node, term.endOffset - nodeStart);
-
-          const rects = range.getClientRects();
-          for (let rect of rects) {
-            const containerRect = blogContainer.getBoundingClientRect();
-
-            boxes.push({
-              top: rect.top - containerRect.top,
-              left: rect.left - containerRect.left,
-              width: rect.width,
-              height: rect.height,
-              color: term.color, // Highlight color
-              borderColor: term.borderColor, // Border color
-              text: term.text, // Tooltip text
-              name: term.name,
-              ...term,
-            });
-          }
+    terms.forEach((term) => {
+      const start = parseInt(term.startOffset);
+      const end = parseInt(term.endOffset);
+      
+      let range = document.createRange();
+      let rangeStarted = false;
+      let currentOffset = 0;
+      
+      textNodes.forEach((node) => {
+        const nodeStart = currentOffset;
+        const nodeEnd = currentOffset + node.nodeValue.length;
+        
+        if (start >= nodeStart && start < nodeEnd) {
+          range.setStart(node, start - nodeStart);
+          rangeStarted = true;
         }
+        if (end > nodeStart && end <= nodeEnd && rangeStarted) {
+          range.setEnd(node, end - nodeStart);
+        }
+        currentOffset += node.nodeValue.length;
       });
 
-      currentOffset += node.nodeValue.length;
+      const rects = range.getClientRects();
+      for (let rect of rects) {
+        const containerRect = blogContainer.getBoundingClientRect();
+        boxes.push({
+          top: rect.top - containerRect.top,
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          height: rect.height,
+          color: term.color,
+          borderColor: term.borderColor,
+          text: term.text,
+          name: term.name,
+          ...term,
+        });
+      }
     });
-
     setHighlightBoxes(boxes);
   };
+
+  const handleOutsideClick = (e) => {
+    if (
+      commentBoxRef.current &&
+      !commentBoxRef.current.contains(e.target) && // Check if the click is outside the comment box
+      !e.target.closest(".highlight-overlay") // Check if the click is not on the highlighted text
+    ) {
+      setHoveredBox(null); // Hide the comment box
+    }
+  };
+  const articleCommentRepliesHandler = (commentId) => {
+    dispatch(
+      getArticleCommentReplies({
+        body: { commentId: commentId },
+        options: {
+          id: articleInfo?._id,
+          btnLoader: true,
+          __module: "article",
+          showToast: false,
+        },
+      })
+    );
+    toggleModal("#showArticleCommentReplyModel");
+  };
+
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div style={{ position: "relative" }}>
@@ -113,15 +151,14 @@ const BlogWithOverlayHighlight = ({ children }) => {
             backgroundColor: box.color,
             borderTop: `2px solid ${box.borderColor}`,
             borderBottom: `2px solid ${box.borderColor}`,
-            pointerEvents: "all", // Allow hover events
+            pointerEvents: "all",
             zIndex: 10,
           }}
-          onMouseEnter={() => setHoveredBox(box)} // Track hover start
-          onMouseLeave={() => setHoveredBox(null)} // Track hover end
+          onClick={() => setHoveredBox(box)}
         />
       ))}
       {/* Render comment box dynamically */}
-      {hoveredBox && commentBox(hoveredBox)}
+      {hoveredBox && commentBox(hoveredBox, commentBoxRef,articleInfo, socketSession, articleCommentRepliesHandler)}
 
       <div
         ref={blogRef}
@@ -139,16 +176,18 @@ const BlogWithOverlayHighlight = ({ children }) => {
 
 export default BlogWithOverlayHighlight;
 
-const commentBox = (commentItem) => (
+
+const commentBox = (commentItem, commentBoxRef, articleInfo, socketSession, articleCommentRepliesHandler) => (
   <div
    //  className="accordion-item shadow border-1 bg-white"
+   ref={commentBoxRef}
     className="comment-box"
     style={{
        position: "absolute",
        top: commentItem.top + commentItem.height + 5, // Position below the highlight
        left: commentItem.left,
        backgroundColor: "white",
-       border: `1px solid ${commentItem.borderColor}`,
+      //  border: `1px solid ${commentItem.borderColor}`,
        borderRadius: "4px",
        padding: "8px",
        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
@@ -209,7 +248,7 @@ const commentBox = (commentItem) => (
               {commentItem.text}
             </p>
           </div>
-          <div className="col-1">
+          {/* <div className="col-1">
             <div className="d-flex flex-row-reverse mt-sm-n1 pt-2 mb-0 mb-lg-1 mb-xl-3">
               <a
                 data-bs-toggle="dropdown"
@@ -221,24 +260,23 @@ const commentBox = (commentItem) => (
               <div className="dropdown dropdown-menu dropdown-menu-end my-1">
                 <button
                   className="dropdown-item"
-                  //   onClick={() => {
-                  //     articleCommentRepliesHandler(
-                  //       commentItem._id
-                  //     );
-                  //   }}
+                    onClick={() => {
+                      articleCommentRepliesHandler(
+                        commentItem._id
+                      );
+                    }}
                 >
                   <i className="ai-dashboard me-2"></i> Show Comment Discussion
                 </button>
                 <ArticleCommentActions
-            //   socket={socketSession}
-              articleId={commentItem?._id}
-              article={commentItem}
-              comment={commentItem}
-              ActionType="dropdown-item"
-            />
+                  socket={socketSession}
+                  articleId={articleInfo?._id}
+                  article={articleInfo}
+                  comment={commentItem}
+               />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
     
   </div>

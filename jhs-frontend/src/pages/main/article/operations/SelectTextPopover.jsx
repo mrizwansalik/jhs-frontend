@@ -11,31 +11,86 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
     const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
 
     const popoverRef = useRef(null);
+    console.log(id);
+    // useEffect(() => {
+    //     const documentSelectWithId = document.getElementById(id)
+    //     const handleSelection = (e) => {
+    //         e.stopPropagation();
+    //         const selection = window.getSelection();
+    //         const selectedText = selection.toString().trim();
+    //         if (selectedText !== '') {
+    //             const range = selection.getRangeAt(0);
+    //             const selectedNode = range.startContainer;
+    //             const selectedElement = selectedNode.nodeType === Node.ELEMENT_NODE
+    //                 ? selectedNode
+    //                 : selectedNode.parentElement;
+
+    //             const startOffset = range.startOffset;
+    //             const endOffset = range.endOffset;
+    //             const elementWithId = selectedElement.closest('[id]'); // Finds the nearest element with an ID
+    //             console.assert(startOffset, endOffset, 'No element with ID found');
+    //             if (elementWithId) {
+    //                 let selectedArea = elementWithId.id;
+    //                 setSelectedCategory({selectedArea, startOffset, endOffset});
+
+    //             }
+    //             const rect = range.getBoundingClientRect();
+
+    //             setPopoverPosition({
+    //                 top: rect.top + window.pageYOffset -60, // Adjust position for popover
+    //                 left: rect.left + window.pageXOffset + (rect.width / 2) - 20, // Adjust position for popover
+    //             });
+
+    //             setSelectedText(selectedText);
+    //             setShowPopover(true);
+    //         } else {
+    //             setShowPopover(false);
+    //         }
+    //     };
+
+    //     const handleHover = (event) => {
+    //         console.log(event.target)
+    //         if (event.target.tagName === 'path' || event.target.className.includes('popover-body')) {
+    //             return true;
+    //         }
+    //         setShowPopover(false);
+    //     }
+
+    //     documentSelectWithId.addEventListener('mouseup', handleSelection);
+    //     document.addEventListener('mouseup', handleHover);
+
+    //     return () => {
+    //         document.addEventListener('mouseup', handleHover);
+    //         documentSelectWithId.removeEventListener('mouseup', handleSelection);
+    //     };
+    // }, []);
 
     useEffect(() => {
-        const documentSelectWithId = document.getElementById(id)
+        const documentSelectWithId = document.getElementById(id);
         const handleSelection = (e) => {
             e.stopPropagation();
             const selection = window.getSelection();
             const selectedText = selection.toString().trim();
             if (selectedText !== '') {
                 const range = selection.getRangeAt(0);
+                const rect = range.getBoundingClientRect();
+    
+                // For better positioning, calculate the start and end positions
+                const startOffset = rect.left;
+                const endOffset = rect.right;
+    
                 const selectedNode = range.startContainer;
                 const selectedElement = selectedNode.nodeType === Node.ELEMENT_NODE
                     ? selectedNode
                     : selectedNode.parentElement;
-
-                const startOffset = range.startOffset;
-                const endOffset = range.endOffset;
-                const elementWithId = selectedElement.closest('[id]'); // Finds the nearest element with an ID
-
+    
+                // Find the element containing the selected text (with an ID)
+                const elementWithId = selectedElement.closest('[id]');
                 if (elementWithId) {
                     let selectedArea = elementWithId.id;
                     setSelectedCategory({selectedArea, startOffset, endOffset});
-
                 }
-                const rect = range.getBoundingClientRect();
-
+    
                 setPopoverPosition({
                     top: rect.top + window.pageYOffset -60, // Adjust position for popover
                     left: rect.left + window.pageXOffset + (rect.width / 2) - 20, // Adjust position for popover
@@ -47,24 +102,23 @@ const SelectTextPopover = ({ children, id = 'SelectTextPopoverData', setSelected
                 setShowPopover(false);
             }
         };
-
+    
         const handleHover = (event) => {
-            console.log(event.target)
             if (event.target.tagName === 'path' || event.target.className.includes('popover-body')) {
                 return true;
             }
             setShowPopover(false);
         }
-
+    
         documentSelectWithId.addEventListener('mouseup', handleSelection);
         document.addEventListener('mouseup', handleHover);
-
+    
         return () => {
-            document.addEventListener('mouseup', handleHover);
+            document.removeEventListener('mouseup', handleHover);
             documentSelectWithId.removeEventListener('mouseup', handleSelection);
         };
     }, []);
-
+    
     return (
         <>
             {showPopover && (
